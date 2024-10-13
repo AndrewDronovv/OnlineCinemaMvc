@@ -1,0 +1,16 @@
+﻿@model IEnumerable<PosterViewModel>
+
+<div class="row row-cols-1 row-cols-md-4 g-4 p-3">
+    @foreach (var poster in Model)
+    {
+        <div class="col">
+            <div class="card h-100">
+                <img src="@poster.CardImagePath" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@poster.Name</h5>
+                    <p class="card-text">@poster.Age+</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,15 @@
+﻿@model HomeViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@await Html.PartialAsync("_Slider.cshtml", Model.Advertisings)
+@await Html.PartialAsync("_Posters.cshtml", Model.Posters)
+@await Html.PartialAsync("_Promotion.cshtml", Model.Promotions)
+
+@await Html.PartialAsync("_PersonalAccountModal")
+
+@section Scripts{
+    <script src="~/js/views/home/Index.js"></script>
+}

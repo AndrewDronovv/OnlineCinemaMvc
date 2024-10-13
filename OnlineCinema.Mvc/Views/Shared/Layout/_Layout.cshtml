@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - OnlineCinema.Mvc</title>
+    @await Html.PartialAsync("_Styles.cshtml")
+</head>
+<body>
+    @await Html.PartialAsync("_Header.cshtml")
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    @await Html.PartialAsync("_Footer.cshtml")
+
+    @await Html.PartialAsync("_Scripts.cshtml")
+    @RenderSection("Scripts", false)
+</body>
+</html>
