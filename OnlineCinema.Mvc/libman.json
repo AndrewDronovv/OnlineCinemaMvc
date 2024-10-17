@@ -10,6 +10,11 @@
       "provider": "jsdelivr",
       "library": "bootstrap@5.3.3",
       "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "axios@1.7.7",
+      "destination": "wwwroot/lib/axios/"
     }
   ]
 }

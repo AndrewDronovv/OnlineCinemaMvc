@@ -23,6 +23,7 @@ namespace OnlineCinema.Mvc.Controllers
                     CardImagePath = p.CardImagePath,
                 }),
                 Promotions = Context.Promotions.Select(p => p).ToList(),
+                News = Context.News.Select(n => n).ToList(),
 
             };
             return View(viewModel);

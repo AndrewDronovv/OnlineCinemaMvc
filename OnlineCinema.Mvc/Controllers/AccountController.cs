@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OnlineCinema.Domain;
 using OnlineCinema.Domain.Entities;
 using OnlineCinema.Mvc.Models;
@@ -20,12 +21,28 @@ namespace OnlineCinema.Mvc.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel input)
         {
-            var result = await _signInManager.PasswordSignInAsync(input.Email, input.Password, false, false);
-            if(result.Succeeded)
+            if (!string.IsNullOrWhiteSpace(input.Email))
             {
-                return Ok();
+                var result = await _signInManager.PasswordSignInAsync(input.Email, input.Password, false, false);
+                if (result.Succeeded)
+                {
+                    return Ok();
+                }
             }
-            
+
+            if (!string.IsNullOrWhiteSpace(input.Phone))
+            {
+                var user = await _userManager.Users.FirstOrDefaultAsync(u => u.PhoneNumber == input.Phone);
+                if (user != null)
+                {
+                    var result = await _signInManager.CheckPasswordSignInAsync(user, input.Password, false);
+                    if (result.Succeeded)
+                    {
+                        return Ok();
+                    }
+                }
+            }
+
             return BadRequest("Неправильный логин и/или пароль");
         }
 

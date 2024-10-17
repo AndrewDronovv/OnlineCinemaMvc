@@ -1,1 +1,20 @@
 ﻿@model IEnumerable<News>
+
+
+<div class="container-fluid">
+    <div class="row">
+        @foreach(var card in Model)
+        {
+            <div class="col">
+                <div class="card mb-3">
+                    <img src="@card.ImagePath" class="card-img-top" alt="Some picture">
+                    <div class="card-body">
+                        <h5 class="card-title">@card.Name</h5>
+                        
+                        <p class="card-text"><small class="text-body-secondary">@card.Date.ToString("f")</small></p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
