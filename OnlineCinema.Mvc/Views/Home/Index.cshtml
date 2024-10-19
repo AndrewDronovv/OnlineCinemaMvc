@@ -8,8 +8,10 @@
 @await Html.PartialAsync("_Posters.cshtml", Model.Posters)
 @await Html.PartialAsync("_Promotion.cshtml", Model.Promotions)
 @await Html.PartialAsync("_News.cshtml", Model.News)
+@await Html.PartialAsync("_Links.cshtml")
 
 @await Html.PartialAsync("_PersonalAccountModal")
+@await Html.PartialAsync("_LoginSuccessModal")
 @section Scripts{
     <script src="~/js/views/home/Index.js"></script>
 }
