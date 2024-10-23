@@ -18,7 +18,7 @@ function validatePasswords() {
     }
 }
 
-document.getElementById("Login").addEventListener("click", function () {
+document.getElementById("LoginButton").addEventListener("click", function () {
     const email = document.getElementById("Email").value;
     const phone = document.getElementById("Phone").value;
     const password = document.getElementById("Password").value;
@@ -64,23 +64,23 @@ function showEmailForm() {
 phoneButton.addEventListener("click", showPhoneForm);
 emailButton.addEventListener("click", showEmailForm);
 
-document.getelementbyid("Registration").addeventlistener("click", function () {
-    const email = document.getelementbyid("Email").value;
-    const phone = document.getelementbyid("Phone").value;
-    const password = document.getelementbyid("Password").value;
+document.getElementById("RegistrationButton").addEventListener("click", function () {
+    const phone = document.getElementById("PhoneRegistration").value;
+    const name = document.getElementById("NameRegistration").value;
+    const password = document.getElementById("EnterPassword").value;
+    const email = document.getElementById("EmailRegistration").value;
+    const surname = document.getElementById("SurnameRegistration").value;
+    const passwordRepetition = document.getElementById("RepeatPassword").value;
 
-    axios.post('/api/account/Login', {
-        email: email,
-        phone: phone,
-        password: password
+    axios.post('/api/account/Register', {
     })
         .then(function (response) {
-            const personalaccountmodal = new bootstrap.modal('#PersonalAccountModal', {
+            const personalaccountmodal = new bootstrap.Modal('#PersonalAccountModal', {
                 keyboard: false
             })
             personalaccountmodal.hide();
 
-            const loginsuccessmodal = new bootstrap.modal('#LoginSuccessModal', {
+            const loginsuccessmodal = new bootstrap.Modal('#LoginSuccessModal', {
                 keyboard: false
             })
             loginsuccessmodal.show();
