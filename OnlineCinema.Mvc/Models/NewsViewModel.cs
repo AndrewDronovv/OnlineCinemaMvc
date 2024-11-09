@@ -1,8 +1,6 @@
-﻿using OnlineCinema.Domain.Common;
+﻿namespace OnlineCinema.Mvc.Models;
 
-namespace OnlineCinema.Domain.Entities;
-
-public class News : Entity
+public class NewsViewModel
 {
     public string ImagePath { get; set; }
     public string Name { get; set; }

@@ -1,12 +1,10 @@
-﻿using OnlineCinema.Domain.Entities;
+﻿namespace OnlineCinema.Mvc.Models;
 
-namespace OnlineCinema.Mvc.Models
+public class HomeViewModel
 {
-    public class HomeViewModel
-    {
-        public IEnumerable<string> Advertisings { get; set; }
-        public IEnumerable<PosterViewModel> Posters { get; set; }
-        public IEnumerable<Promotion> Promotions { get; set; }
-        public IEnumerable<News> News { get; set; }
-    }
+    public IEnumerable<string> Advertisings { get; set; }
+    public IEnumerable<PosterViewModel> Posters { get; set; }
+    public IEnumerable<PromotionViewModel> Promotions { get; set; }
+    public IEnumerable<NewsViewModel> News { get; set; }
+    public IEnumerable<LoginViewModel> Logins { get; set; }
 }

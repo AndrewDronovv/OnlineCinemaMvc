@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Promotion>
+﻿@model IEnumerable<PromotionViewModel>
 
 @{
     int count = 1;
@@ -12,7 +12,7 @@
                         @promotion.Name
                     </h3>
                     <p>@promotion.Description</p>
-                    <a class="btn btn-primary promotionBtnColor" href="#">@promotion.ButtonText</a>
+                    <a class="btn btn-primary promotionBtnColor" href="promo/@promotion.Name">@promotion.ButtonText</a>
                 </div>
             </div>
         </div>

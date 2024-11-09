@@ -1,32 +1,42 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OnlineCinema.Domain;
 using OnlineCinema.Mvc.Models;
 
-namespace OnlineCinema.Mvc.Controllers
+namespace OnlineCinema.Mvc.Controllers;
+
+public class HomeController : BaseMvcController
 {
-    public class HomeController : BaseMvcController
+    public HomeController(IMapper mapper, AppDbContext context) : base(mapper, context)
     {
-        public HomeController(IMapper mapper, AppDbContext context) : base(mapper, context)
-        {
-        }
+    }
 
-        public IActionResult Index()
+    public async Task<IActionResult> Index()
+    {
+        HomeViewModel viewModel = new HomeViewModel
         {
-            var viewModel = new HomeViewModel
+            Advertisings = await Context.Advertisings.Select(a => a.PathToImage).ToListAsync(),
+            Posters = Context.Movies.Where(m => m.IsVisible == true).Select(m => new PosterViewModel
             {
-                Advertisings = Context.Advertisings.Select(a => a.PathToImage).ToList(),
-                Posters = Context.Movies.Where(m => m.IsVisible == true).Select(p => new PosterViewModel
-                {
-                    Age = p.AgeRating,
-                    Name = p.Name,
-                    CardImagePath = p.CardImagePath,
-                }),
-                Promotions = Context.Promotions.Select(p => p).ToList(),
-                News = Context.News.Select(n => n).ToList(),
-
-            };
-            return View(viewModel);
-        }
+                Age = m.AgeRating,
+                Name = m.Name,
+                CardImagePath = m.CardImagePath
+            }),
+            Promotions = Context.Promotions.Select(p => new PromotionViewModel
+            {
+                Name = p.Name,
+                ImagePath = p.ImagePath,
+                Description = p.Description,
+                ButtonText = p.ButtonText
+            }),
+            News = Context.News.Select(n => new NewsViewModel
+            {
+                Name = n.Name,
+                ImagePath = n.ImagePath,
+                Date = n.Date
+            }),
+        };
+        return View(viewModel);
     }
 }

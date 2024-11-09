@@ -22,20 +22,16 @@ document.getElementById("LoginButton").addEventListener("click", function () {
     const email = document.getElementById("Email").value;
     const phone = document.getElementById("Phone").value;
     const password = document.getElementById("Password").value;
-    axios.post('/api/Account/Login', {
+    axios.post('/Account/Login', {
         email: email,
         phone: phone,
         password: password
     })
         .then(function (response) {
-            const personalAccountModal = new bootstrap.Modal('#PersonalAccountModal', {
-                keyboard: false
-            })
+            const personalAccountModal = bootstrap.Modal.getOrCreateInstance(document.querySelector("#PersonalAccountModal"));
             personalAccountModal.hide();
 
-            const loginSuccessModal = new bootstrap.Modal('#LoginSuccessModal', {
-                keyboard: false
-            })
+            const loginSuccessModal = bootstrap.Modal.getOrCreateInstance(document.querySelector("#LoginSuccessModal"));
             loginSuccessModal.show();
         })
         .catch(function (error) {
@@ -69,21 +65,25 @@ document.getElementById("RegistrationButton").addEventListener("click", function
     const name = document.getElementById("NameRegistration").value;
     const password = document.getElementById("EnterPassword").value;
     const email = document.getElementById("EmailRegistration").value;
-    const surname = document.getElementById("SurnameRegistration").value;
+    const lastname = document.getElementById("SurnameRegistration").value;
     const passwordRepetition = document.getElementById("RepeatPassword").value;
+    const gender = document.getElementById("GenderRegistration").value;
 
-    axios.post('/api/account/Register', {
+    axios.post('/Account/Register', {
+        PhoneNumber: phone,
+        Name: name,
+        LastName: lastname,
+        Email: email,
+        Password: password,
+        IsMan: true,
+
     })
         .then(function (response) {
-            const personalaccountmodal = new bootstrap.Modal('#PersonalAccountModal', {
-                keyboard: false
-            })
-            personalaccountmodal.hide();
+            const personalAccountModal = bootstrap.Modal.getOrCreateInstance(document.querySelector("#PersonalAccountModal"));
+            personalAccountModal.hide();
 
-            const loginsuccessmodal = new bootstrap.Modal('#LoginSuccessModal', {
-                keyboard: false
-            })
-            loginsuccessmodal.show();
+            const registrationSuccessModal = bootstrap.Modal.getOrCreateInstance(document.querySelector("#RegistrationSuccessModal"));
+            registrationSuccessModal.show();
         })
         .catch(function (error) {
             console.log(error);

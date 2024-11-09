@@ -1,9 +1,8 @@
-﻿namespace OnlineCinema.Domain.Enums
+﻿namespace OnlineCinema.Domain.Enums;
+
+public enum TicketType
 {
-    public enum TicketType
-    {
-        Sold,
-        Booked,
-        OnSale
-    }
+    Sold,
+    Booked,
+    OnSale
 }

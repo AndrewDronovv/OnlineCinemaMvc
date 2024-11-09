@@ -1,10 +1,9 @@
-﻿namespace OnlineCinema.Domain.Common
+﻿namespace OnlineCinema.Domain.Common;
+
+public abstract class Entity<TPrimaryKey>
 {
-    public abstract class Entity<TPrimaryKey>
-    {
-        public TPrimaryKey Id { get; set; }
-    }
-    public abstract class Entity : Entity<int>
-    {
-    }
+    public TPrimaryKey Id { get; set; }
+}
+public abstract class Entity : Entity<int>
+{
 }

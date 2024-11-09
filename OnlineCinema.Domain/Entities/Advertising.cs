@@ -1,9 +1,8 @@
 ﻿using OnlineCinema.Domain.Common;
 
-namespace OnlineCinema.Domain.Entities
+namespace OnlineCinema.Domain.Entities;
+
+public class Advertising : Entity
 {
-    public class Advertising : Entity
-    {
-        public string PathToImage { get; set; }
-    }
+    public string PathToImage { get; set; }
 }

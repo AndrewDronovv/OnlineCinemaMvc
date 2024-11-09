@@ -1,10 +1,9 @@
-﻿namespace OnlineCinema.Domain.Enums
+﻿namespace OnlineCinema.Domain.Enums;
+
+public enum HallType
 {
-    public enum HallType
-    {
-        Comfort,
-        Common,
-        VIP,
-        AllHall,
-    }
+    Comfort,
+    Common,
+    VIP,
+    AllHall,
 }

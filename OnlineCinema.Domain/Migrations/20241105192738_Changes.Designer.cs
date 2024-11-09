@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineCinema.Domain;
 
@@ -11,9 +12,11 @@ using OnlineCinema.Domain;
 namespace OnlineCinema.Domain.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241105192738_Changes")]
+    partial class Changes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -169,7 +172,7 @@ namespace OnlineCinema.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Advertisings", (string)null);
+                    b.ToTable("Advertisings");
                 });
 
             modelBuilder.Entity("OnlineCinema.Domain.Entities.Cinema", b =>
@@ -198,7 +201,7 @@ namespace OnlineCinema.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cinemas", (string)null);
+                    b.ToTable("Cinemas");
                 });
 
             modelBuilder.Entity("OnlineCinema.Domain.Entities.Customer", b =>
@@ -215,7 +218,7 @@ namespace OnlineCinema.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers", (string)null);
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("OnlineCinema.Domain.Entities.Genre", b =>
@@ -232,7 +235,7 @@ namespace OnlineCinema.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genres", (string)null);
+                    b.ToTable("Genres");
                 });
 
             modelBuilder.Entity("OnlineCinema.Domain.Entities.Hall", b =>
@@ -261,7 +264,7 @@ namespace OnlineCinema.Domain.Migrations
 
                     b.HasIndex("CinemaId");
 
-                    b.ToTable("Halls", (string)null);
+                    b.ToTable("Halls");
                 });
 
             modelBuilder.Entity("OnlineCinema.Domain.Entities.Movie", b =>
@@ -324,7 +327,7 @@ namespace OnlineCinema.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movies", (string)null);
+                    b.ToTable("Movies");
                 });
 
             modelBuilder.Entity("OnlineCinema.Domain.Entities.MovieGenre", b =>
@@ -347,7 +350,7 @@ namespace OnlineCinema.Domain.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("MovieGenres", (string)null);
+                    b.ToTable("MovieGenres");
                 });
 
             modelBuilder.Entity("OnlineCinema.Domain.Entities.News", b =>
@@ -371,7 +374,7 @@ namespace OnlineCinema.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("News", (string)null);
+                    b.ToTable("News");
                 });
 
             modelBuilder.Entity("OnlineCinema.Domain.Entities.Promotion", b =>
@@ -400,7 +403,7 @@ namespace OnlineCinema.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Promotions", (string)null);
+                    b.ToTable("Promotions");
                 });
 
             modelBuilder.Entity("OnlineCinema.Domain.Entities.Seat", b =>
@@ -427,7 +430,7 @@ namespace OnlineCinema.Domain.Migrations
 
                     b.HasIndex("HallId");
 
-                    b.ToTable("Seat", (string)null);
+                    b.ToTable("Seat");
                 });
 
             modelBuilder.Entity("OnlineCinema.Domain.Entities.Session", b =>
@@ -456,7 +459,7 @@ namespace OnlineCinema.Domain.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("Sessions", (string)null);
+                    b.ToTable("Sessions");
                 });
 
             modelBuilder.Entity("OnlineCinema.Domain.Entities.Ticket", b =>
@@ -493,7 +496,7 @@ namespace OnlineCinema.Domain.Migrations
 
                     b.HasIndex("SessionId");
 
-                    b.ToTable("Tickets", (string)null);
+                    b.ToTable("Tickets");
                 });
 
             modelBuilder.Entity("OnlineCinema.Domain.Entities.User", b =>
@@ -528,10 +531,6 @@ namespace OnlineCinema.Domain.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -556,6 +555,7 @@ namespace OnlineCinema.Domain.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 

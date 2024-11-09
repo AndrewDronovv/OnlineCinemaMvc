@@ -1,10 +1,9 @@
 ﻿using OnlineCinema.Domain.Common;
 
-namespace OnlineCinema.Domain.Entities
+namespace OnlineCinema.Domain.Entities;
+
+public class Genre : Entity
 {
-    public class Genre : Entity
-    {
-        public string Name { get; set; }
-        public ICollection<MovieGenre> MovieGenres { get; set; }
-    }
+    public string Name { get; set; }
+    public ICollection<MovieGenre> MovieGenres { get; set; }
 }

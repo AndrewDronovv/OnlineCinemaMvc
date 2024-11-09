@@ -1,8 +1,6 @@
-﻿using OnlineCinema.Domain.Common;
+﻿namespace OnlineCinema.Mvc.Models;
 
-namespace OnlineCinema.Domain.Entities;
-
-public class Promotion : Entity
+public class PromotionViewModel
 {
     public string ImagePath { get; set; }
     public string Name { get; set; }
