@@ -1,6 +1,6 @@
-﻿namespace OnlineCinema.Mvc.Models;
+﻿namespace OnlineCinema.Mvc.Models.ViewModels.Home;
 
-public class PromotionViewModel
+public class HomePromotionsViewModel
 {
     public string ImagePath { get; set; }
     public string Name { get; set; }

@@ -1,14 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace OnlineCinema.Mvc.Models;
+namespace OnlineCinema.Mvc.Models.ViewModels.Home;
 
 public class LoginViewModel
 {
-    [Required(ErrorMessage ="Необходимо ввести email адрес")]
+    [Required(ErrorMessage = "Необходимо ввести email адрес")]
     [EmailAddress]
     public string? Email { get; set; }
 
-    [Required(ErrorMessage ="Необходимо ввести пароль")]
+    [Required(ErrorMessage = "Необходимо ввести пароль")]
     [DataType(DataType.Password)]
     public string Password { get; set; }
 

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnlineCinema.Domain;
 using OnlineCinema.Domain.Entities;
-using OnlineCinema.Mvc.Models;
+using OnlineCinema.Mvc.Models.ViewModels.Home;
 
 namespace OnlineCinema.Mvc.Controllers;
 

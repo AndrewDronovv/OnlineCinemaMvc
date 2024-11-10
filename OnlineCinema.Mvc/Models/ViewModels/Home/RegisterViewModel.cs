@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace OnlineCinema.Mvc.Models
+namespace OnlineCinema.Mvc.Models.ViewModels.Home
 {
     public class RegisterViewModel
     {

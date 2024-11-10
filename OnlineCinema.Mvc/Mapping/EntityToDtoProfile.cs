@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using OnlineCinema.Domain.Entities;
-using OnlineCinema.Mvc.Models;
+using OnlineCinema.Mvc.Models.ViewModels.Home;
 
 namespace OnlineCinema.Mvc.Mapping;
 

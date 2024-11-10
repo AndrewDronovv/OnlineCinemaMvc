@@ -1,0 +1,24 @@
+﻿@model MoviesViewModel
+
+@if (Model.Movies.Any())
+{
+    var movie = Model.Movies.FirstOrDefault(p => p.Id == ViewBag.MovieId);
+    if (movie != null)
+    {
+        ViewData["Title"] = movie.Name;
+        <div class="white-text">
+            <h3>@movie.Name</h3>
+            <p>@movie.PremiereDate.ToString("f")</p>
+            <p>@movie.Description</p>
+            <img src="~/@movie.CardImagePath" class="rounded-3" alt="Alternate Text" />
+        </div>
+    }
+    else
+    {
+        <p>Фильм с указанным ID не найден.</p>
+    }
+}
+else
+{
+    <p>Фильмы не найдены.</p>
+}

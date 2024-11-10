@@ -82,3 +82,12 @@ ul {
     width: 200px;
     height: 150px;
 }
+
+.custom-img-size {
+    width: 200px;
+    height: auto;
+}
+
+.promotion-card h{
+    color:white;
+}
