@@ -88,6 +88,16 @@ ul {
     height: auto;
 }
 
-.promotion-card h{
-    color:white;
+.promotion-card h {
+    color: white;
 }
+
+.card-news-text {
+    text-decoration: none;
+    color: black;
+}
+
+    .card-news-text:hover {
+        text-decoration: none;
+        color: #c2255a
+    }

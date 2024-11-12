@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HomePromotionsViewModel>
+﻿@model IEnumerable<HomePromotionViewModel>
 
 @{
     int count = 1;
@@ -6,16 +6,19 @@
     {
         <div class="row">
             <div class="col @(count % 2 == 0 ? "reverse": "normal")">
-                <img src="@promotion.ImagePath" class="rounded-3" alt="Alternate Text" />
+                <a asp-controller="Promotions" asp-action="GetPromotionById" asp-route-id="@promotion.Id">
+                    <img src="@promotion.ImagePath" class="rounded-3" alt="Alternate Text" />
+                </a>
                 <div>
                     <h3>
                         @promotion.Name
                     </h3>
                     <p>@promotion.Description</p>
-                    <a class="btn btn-primary promotionBtnColor" href="promo/@promotion.Name">@promotion.ButtonText</a>
+                    <a class="btn btn-primary promotionBtnColor" asp-controller="Promotions" asp-action="GetPromotionById" asp-route-id="@promotion.Id">@promotion.ButtonText</a>
                 </div>
             </div>
         </div>
-        @(count++);
+        @(count++)
+        ;
     }
 }

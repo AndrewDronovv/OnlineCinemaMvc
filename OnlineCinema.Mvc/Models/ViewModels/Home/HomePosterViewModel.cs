@@ -1,6 +1,6 @@
 ﻿namespace OnlineCinema.Mvc.Models.ViewModels.Home;
 
-public class PosterViewModel
+public class HomePosterViewModel
 {
     public int Id { get; set; }
     public string CardImagePath { get; set; }

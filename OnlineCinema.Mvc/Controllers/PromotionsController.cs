@@ -17,7 +17,7 @@ public class PromotionsController : BaseMvcController
     {
         try
         {
-            var promotions = await Context.Promotions
+            var promotionsViewModel = await Context.Promotions
                 .Select(p => new PromotionViewModel
                 {
                     Id = p.Id,
@@ -29,21 +29,16 @@ public class PromotionsController : BaseMvcController
                 })
                 .ToListAsync();
 
-            if (!promotions.Any())
+            if (!promotionsViewModel.Any())
             {
-                return View("Акций в данный момент нет");
+                return NotFound();
             }
-
-            var promotionsViewModel = new PromotionsViewModel
-            {
-                Promotions = promotions
-            };
 
             return View("Promotions", promotionsViewModel);
         }
         catch (Exception ex)
         {
-            return View("Ошибка");
+            return NotFound();
         }
     }
 
@@ -66,14 +61,14 @@ public class PromotionsController : BaseMvcController
 
             if (promotionViewModel == null)
             {
-                return View($"Акция с номером {id} не найдена");
+                return NotFound();
             }
 
             return View("PromotionDetails", promotionViewModel);
         }
         catch (Exception ex)
         {
-            return View("Ошибка");
+            return NotFound();
         }
     }
 }

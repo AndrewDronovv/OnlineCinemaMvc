@@ -1,10 +1,10 @@
-﻿@model PromotionsViewModel
+﻿@model IEnumerable<PromotionViewModel>
 
 <h1 class="white-text pt-5">Акции и скидки</h1>
 <div class="pt-5 pb-5">
     @{
         int count = 1;
-        foreach (var promotion in Model.Promotions)
+        foreach (var promotion in Model)
         {
             <div class="row">
                 <div class="col @(count % 2 == 0 ? "reverse" : "normal")">
