@@ -14,7 +14,7 @@ public class HomeController : BaseMvcController
 
     public async Task<IActionResult> Index()
     {
-        var viewModel = new HomeViewModel
+        var homeViewModel = new HomeViewModel
         {
             Advertisings = await Context.Advertisings.Select(a => a.PathToImage).ToListAsync(),
             Posters = Context.Movies.Where(m => m.IsVisible == true).Select(m => new PosterViewModel
@@ -39,6 +39,6 @@ public class HomeController : BaseMvcController
             }),
         };
 
-        return View(viewModel);
+        return View(homeViewModel);
     }
 }

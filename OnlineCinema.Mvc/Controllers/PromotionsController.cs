@@ -6,39 +6,74 @@ using OnlineCinema.Mvc.Models.ViewModels.Promotions;
 
 namespace OnlineCinema.Mvc.Controllers;
 
-[Route("promotions")]
 public class PromotionsController : BaseMvcController
 {
     public PromotionsController(IMapper mapper, AppDbContext context) : base(mapper, context)
     {
     }
 
-    [Route("")]
-    public async Task<IActionResult> Promo()
+    [Route("promotions")]
+    public async Task<IActionResult> Promotions()
     {
-        var viewModel = new PromotionsViewModel
+        try
         {
-            Promotions = await Context.Promotions.Select(p => p).ToListAsync(),
-        };
+            var promotions = await Context.Promotions
+                .Select(p => new PromotionViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    DateTime = DateTime.Now,
+                    ButtonText = p.ButtonText,
+                    Description = p.Description,
+                    ImagePath = p.ImagePath,
+                })
+                .ToListAsync();
 
-        return View(viewModel);
+            if (!promotions.Any())
+            {
+                return View("Акций в данный момент нет");
+            }
+
+            var promotionsViewModel = new PromotionsViewModel
+            {
+                Promotions = promotions
+            };
+
+            return View("Promotions", promotionsViewModel);
+        }
+        catch (Exception ex)
+        {
+            return View("Ошибка");
+        }
     }
 
-    [Route("getbyid")]
-    public async Task<IActionResult> GetById(int id)
+    [Route("promotions/{id:int}")]
+    public async Task<IActionResult> GetPromotionById(int? id)
     {
-        //var promotion = await Context.Promotions.FirstOrDefaultAsync(n => n.Id == id);
-        //if (promotion == null)
-        //{
-        //    return NotFound();
-        //}
-
-        ViewBag.PromoId = id;
-        var viewModel = new PromotionsViewModel
+        try
         {
-            Promotions = await Context.Promotions.ToListAsync(),
-        };
+            var promotionViewModel = await Context.Promotions
+                .Where(p => p.Id == id)
+                .Select(p => new PromotionViewModel
+                {
+                    Name = p.Name,
+                    DateTime = DateTime.Now,
+                    ButtonText = p.ButtonText,
+                    Description = p.Description,
+                    ImagePath = p.ImagePath,
+                })
+                .FirstOrDefaultAsync();
 
-        return View("PromotionDetails", viewModel);
+            if (promotionViewModel == null)
+            {
+                return View($"Акция с номером {id} не найдена");
+            }
+
+            return View("PromotionDetails", promotionViewModel);
+        }
+        catch (Exception ex)
+        {
+            return View("Ошибка");
+        }
     }
 }

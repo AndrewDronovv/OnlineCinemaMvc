@@ -1,23 +1,9 @@
-﻿@model PromotionsViewModel
+﻿@model PromotionViewModel
 
-
-
-@if (Model.Promotions.Any())
-{
-    var promo = Model.Promotions.FirstOrDefault(p => p.Id == ViewBag.PromoId);
-    if (promo != null)
-    {
-        ViewData["Title"] = promo.Name;
-        <div class="white-text">
-            <h3>@promo.Name</h3>
-            <p>@promo.DateTime.ToString("f")</p>
-            <p>@promo.Name</p>
-            <p>@promo.Description</p>
-            <img src="~/@promo.ImagePath" class="rounded-3" alt="Alternate Text" />
-        </div>
-    }
-}
-else
-{
-    <p>Акция не найдена.</p>
-}
+<div class="white-text">
+    <h3>@Model.Name</h3>
+    <p>@Model.DateTime.ToString("f")</p>
+    <p>@Model.Name</p>
+    <p>@Model.Description</p>
+    <img src="~/@Model.ImagePath" class="rounded-3" alt="Alternate Text" />
+</div>

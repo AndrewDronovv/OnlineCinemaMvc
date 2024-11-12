@@ -6,34 +6,33 @@ using OnlineCinema.Mvc.Models.ViewModels.Movies;
 
 namespace OnlineCinema.Mvc.Controllers;
 
-[Route("movies")]
+
 public class MoviesController : BaseMvcController
 {
     public MoviesController(IMapper mapper, AppDbContext context) : base(mapper, context)
     {
     }
 
-    [HttpGet]
-    [Route("getbyid")]
-    public async Task<IActionResult> GetById([FromQuery] int id)
+    [Route("movies/{id:int}")]
+    public async Task<IActionResult> GetMovieById(int? id)
     {
-        if (id <= 0)
-        {
-            return BadRequest("Неверный id");
-        }
-
-        var movie = await Context.Movies.FirstOrDefaultAsync(m => m.Id == id);
-        if (movie == null)
+        if (id == null)
         {
             return NotFound();
         }
 
-        ViewBag.MovieId = id;
-        var viewModel = new MoviesViewModel
-        {
-            Movies = await Context.Movies.ToListAsync(),
-        };
+        var movieViewModel = await Context.Movies
+            .Where(m => m.Id == id)
+            .Select(m => new MovieViewModel
+            {
+                Name = m.Name,
+                Description = m.Description,
+                Duration = m.Duration,
+                Country = m.Country,
+                OriginalName = m.OriginalName,
+            })
+            .FirstOrDefaultAsync();
 
-        return View("Movies", viewModel);
+        return View("Movie", movieViewModel);
     }
 }
