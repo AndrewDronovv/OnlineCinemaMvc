@@ -1,22 +1,22 @@
 ﻿<header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="~/images/logo/logo.png" alt="Logo" />
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                <img src="~/images/logo/logo.png" alt="Logo" class="logo-image"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#NavbarSupportedContent" aria-controls="NavbarSupportedContent" aria-expanded="false">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="NavbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-white">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="promotions" asp-action="promotions">АКЦИИ</a>
+                        <a class="nav-link" asp-controller="Promotions" asp-action="Promotions">АКЦИИ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">ДЕТЯМ</a>
+                        <a class="nav-link" asp-controller="Movies" asp-action="KidsMovies">ДЕТЯМ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">АРТ</a>
+                        <a class="nav-link" asp-controller="Movies" asp-action="ArtMovies">АРТ</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5">

@@ -24,6 +24,22 @@ body {
 
 
 
+
+/*Логотип*/
+
+.logo-image {
+    width:65px;
+    height:auto;
+}
+
+.custom-img-cinemalogo {
+    width: 120px;
+    height: auto;
+}
+
+
+/*Расположение карточек акций*/
+
 .reverse {
     display: flex;
     flex-direction: row-reverse;
@@ -38,6 +54,14 @@ body {
     color: white;
 }
 
+
+
+.text-white a {
+    color:white;
+}
+
+
+
 .promotionBtnColor {
     background-color: #bd257f;
 }
@@ -45,6 +69,9 @@ body {
     .promotionBtnColor:hover {
         background-color: #bd257f;
     }
+
+
+/*Соцсети footer*/
 
 .btn-circle {
     width: 50px;
@@ -56,16 +83,9 @@ body {
     line-height: 1.5;
 }
 
-.text-color-change {
-    color: white;
-}
 
 ul {
     list-style-type: none;
-}
-
-.white-text {
-    color: white;
 }
 
 .carousel-inner {
@@ -78,10 +98,7 @@ ul {
     object-fit: cover;
 }
 
-.custom-img-cinemalogo {
-    width: 200px;
-    height: 150px;
-}
+
 
 .custom-img-size {
     width: 200px;
@@ -101,3 +118,12 @@ ul {
         text-decoration: none;
         color: #c2255a
     }
+
+
+/*Карточка фильма, выбор сеанса и оплата*/
+
+.movie-card-details {
+    width: 250px;
+    height:250pxpx;
+    clip-path: circle(40%);
+}

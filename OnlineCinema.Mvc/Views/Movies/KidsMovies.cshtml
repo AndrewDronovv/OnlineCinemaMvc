@@ -1,0 +1,18 @@
+﻿@model IEnumerable<KidsViewModel>
+
+<div class="row row-cols-1 row-cols-md-4 g-4 p-3">
+    @foreach (var movie in Model)
+    {
+        <div class="col">
+            <div class="card h-100">
+                <a asp-controller="Movies" asp-action="Get" asp-route-id="@movie.Id">
+                    <img src="@movie.CardImagePath" class="card-img-top" alt="Some picture">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">@movie.Name</h5>
+                    <p class="card-text">@movie.AgeRating+</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

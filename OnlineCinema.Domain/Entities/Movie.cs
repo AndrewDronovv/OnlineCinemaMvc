@@ -11,7 +11,7 @@ public class Movie : Entity
     public int AgeRating { get; set; }
     public string Description { get; set; }
     public string Director { get; set; }
-    public string[] Actor { get; set; }
+    public string Actor { get; set; }
     public string Country { get; set; }
     public DateOnly PremiereDate { get; set; }
     public DateOnly WorldPremiere { get; set; }

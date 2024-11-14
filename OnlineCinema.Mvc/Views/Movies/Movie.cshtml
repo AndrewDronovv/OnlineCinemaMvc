@@ -1,5 +1,13 @@
 ﻿@model MovieViewModel
 
-<div class="white-text">
-    <p>@Model.Name</p>
+<div class="container text-center">
+    <div class="row align-items-start md">
+        <div class="col movie-card-details">
+            <img src="~/@Model.CardImagePath" alt="some picture" />
+        </div>
+        <div class="col text-white">
+            <p>@Model.Name</p>
+        </div>
+        
+    </div>
 </div>

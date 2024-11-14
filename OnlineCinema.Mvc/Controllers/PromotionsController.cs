@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnlineCinema.Domain;
@@ -18,15 +19,7 @@ public class PromotionsController : BaseMvcController
         try
         {
             var promotionsViewModel = await Context.Promotions
-                .Select(p => new PromotionViewModel
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    DateTime = DateTime.Now,
-                    ButtonText = p.ButtonText,
-                    Description = p.Description,
-                    ImagePath = p.ImagePath,
-                })
+                .ProjectTo<PromotionViewModel>(Mapper.ConfigurationProvider)
                 .ToListAsync();
 
             if (!promotionsViewModel.Any())
@@ -42,22 +35,14 @@ public class PromotionsController : BaseMvcController
         }
     }
 
-    [Route("promotions/{id:int}")]
-    public async Task<IActionResult> GetPromotionById(int? id)
+    [Route("promotions/{name}")]
+    public async Task<IActionResult> Get(string name)
     {
         try
         {
             var promotionViewModel = await Context.Promotions
-                .Where(p => p.Id == id)
-                .Select(p => new PromotionViewModel
-                {
-                    Name = p.Name,
-                    DateTime = DateTime.Now,
-                    ButtonText = p.ButtonText,
-                    Description = p.Description,
-                    ImagePath = p.ImagePath,
-                })
-                .FirstOrDefaultAsync();
+                .ProjectTo<PromotionViewModel>(Mapper.ConfigurationProvider)
+                .FirstOrDefaultAsync(p => p.Name == name);
 
             if (promotionViewModel == null)
             {
