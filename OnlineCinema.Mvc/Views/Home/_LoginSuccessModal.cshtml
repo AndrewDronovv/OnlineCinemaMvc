@@ -1,18 +1,22 @@
 ﻿<div class="modal" tabindex="-1" id="LoginSuccessModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-center" style="width: 100%">
+                <h5 class="modal-title text-start" style="width: 100%">
                     УСПЕШНАЯ АВТОРИЗАЦИЯ
                 </h5>
             </div>
             <div class="modal-body text-center">
-                <h5>ЗДРАВСТВУЙТЕ </h5>
+                <h5>Здравствуйте, <span id="LoginSuccesNameSpot"></span></h5>
                 <p>
-                    Вы успешно авторизовались на сайте.
+                    Вы успешно авторизовались на сайте
                 </p>
             </div>
             <div class="modal-footer justify-content-center">
+                <button type="button"
+                        class="btn btn-secondary">
+                    В ЛИЧНЫЙ КАБИНЕТ
+                </button>
                 <button type="button"
                         class="btn btn-secondary"
                         data-bs-dismiss="modal">

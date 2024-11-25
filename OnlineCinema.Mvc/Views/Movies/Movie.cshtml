@@ -1,13 +1,70 @@
-﻿@model MovieViewModel
+﻿@using System.Globalization
+@model MovieViewModel
 
-<div class="container text-center">
-    <div class="row align-items-start md">
-        <div class="col movie-card-details">
-            <img src="~/@Model.CardImagePath" alt="some picture" />
+@functions {
+    string GetDay(DateTime sessionDate)
+    {
+        var dateNow = DateTime.Now;
+        var currentDate = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day);
+        var differenceDate = sessionDate - currentDate;
+        if (sessionDate.ToString("dd.MM.yyyy") == DateTime.Now.ToString("dd.MM.yyyy"))
+        {
+            return "сегодня";
+        }
+        else if (differenceDate.TotalDays == 1)
+        {
+            return "завтра";
+        }
+        else
+        {
+            return sessionDate.ToString("dddd", CultureInfo.GetCultureInfo("ru-RU"));
+        }
+    }
+}
+
+<div class="container-fluid mt-4">
+    <div class="row align-items-center">
+        <div class="col-md-2">
+            <img src="~/@Model.CardImagePath" alt="some picture" class="img-fluid rounded custom-img">
         </div>
-        <div class="col text-white">
-            <p>@Model.Name</p>
+        <div class="col-md align-self-start text-white">
+            <h1>@Model.Name</h1>
+            <div class="row">
+                <div class="col-2">
+                    @foreach (var genre in Model.MovieGenres)
+                    {
+                        <p>@genre.Genre.Name</p>
+                    }
+                </div>
+                <div class="col">
+
+                    <p>@Model.Duration мин</p>
+                </div>
+            </div>
+            <div class="row">
+                <a href="#">Подробнее о фильме</a>
+            </div>
         </div>
-        
+    </div>
+</div>
+
+<div class="w-100 bg-secondary" style="height: 1px;"></div>
+
+<div class="container">
+    <div class="row">
+        <div>
+            @{
+                <p>@Model.Name</p>
+            }
+        </div>
+    </div>
+    <div class="container">
+        @foreach (var sessionDate in Model.SessionDates)
+        {
+            <button class="btn btn-outline text-bg-light">
+                @sessionDate.ToString("M")
+                @GetDay(sessionDate)
+            </button>
+        }
     </div>
 </div>

@@ -6,7 +6,6 @@ function validatePasswords() {
     var repeatPassword = document.getElementById('RepeatPassword');
 
     const enterPasswordValidation = document.getElementById("EnterPasswordValidation");
-    const confirmPasswordValidation = document.getElementById("ConfirmPasswordValidation");
 
     if (enterPassword.value !== repeatPassword.value) {
         enterPassword.classList.add("is-invalid");
@@ -33,12 +32,15 @@ document.getElementById("LoginButton").addEventListener("click", function () {
 
             const loginSuccessModal = bootstrap.Modal.getOrCreateInstance(document.querySelector("#LoginSuccessModal"));
             loginSuccessModal.show();
+
+            const name = response.data.name;
+
+            document.getElementById("LoginSuccesNameSpot").innerText = `${name}`;
         })
         .catch(function (error) {
             console.log(error);
         });
 });
-
 
 const emailButton = document.getElementById("EmailBtn");
 const phoneButton = document.getElementById("PhoneBtn");

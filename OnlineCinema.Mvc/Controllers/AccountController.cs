@@ -26,7 +26,8 @@ public class AccountController : BaseMvcController
             var result = await _signInManager.PasswordSignInAsync(input.Email, input.Password, false, false);
             if (result.Succeeded)
             {
-                return Ok();
+                var user = await _userManager.FindByEmailAsync(input.Email);
+                return Ok(new {Name = user.Name});
             }
         }
 
@@ -66,5 +67,12 @@ public class AccountController : BaseMvcController
         }
 
         return BadRequest(result.Errors);
+    }
+
+    public async Task<IActionResult> GetUser()
+    {
+        //var userViewModel = await _userManager.
+        
+        return View("PersonalAccount");
     }
 }

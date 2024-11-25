@@ -11,10 +11,17 @@
                 </a>
                 <div>
                     <h3>
-                        @promotion.Name
+                        @promotion.DisplayName
                     </h3>
                     <p>@promotion.Description</p>
-                    <a class="btn btn-primary promotionBtnColor" asp-controller="Promotions" asp-action="Get" asp-route-name="@promotion.Name">@promotion.ButtonText</a>
+                    @if (string.IsNullOrWhiteSpace(promotion.Link))
+                    {
+                        <a class="btn btn-primary promotionBtnColor" asp-controller="Promotions" asp-action="Get" asp-route-name="@promotion.Name">@promotion.ButtonText</a>
+                    }
+                    else
+                    {
+                        <a href="@promotion.Link" class="btn btn-primary promotionBtnColor">@promotion.ButtonText</a>
+                    }
                 </div>
             </div>
         </div>

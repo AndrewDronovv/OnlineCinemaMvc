@@ -20,5 +20,7 @@ namespace OnlineCinema.Mvc.Models.ViewModels.Movies
         public float Rating { get; set; }
         public bool IsVisible { get; set; }
         public string CardImagePath { get; set; }
+
+        public DateTime[] SessionDates { get; set; }
     }
 }
