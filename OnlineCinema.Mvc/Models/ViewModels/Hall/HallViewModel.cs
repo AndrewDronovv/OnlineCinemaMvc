@@ -1,9 +1,8 @@
-﻿using OnlineCinema.Domain.Common;
-using OnlineCinema.Domain.Enums;
+﻿using OnlineCinema.Domain.Enums;
 
-namespace OnlineCinema.Domain.Entities;
+namespace OnlineCinema.Mvc.Models.ViewModels.Hall;
 
-public class Hall : Entity
+public class HallViewModel
 {
     public string Name { get; set; }
     public HallType HallType { get; set; }

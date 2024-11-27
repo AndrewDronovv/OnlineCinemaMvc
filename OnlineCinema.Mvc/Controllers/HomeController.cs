@@ -27,6 +27,7 @@ public class HomeController : BaseMvcController
                 .ProjectTo<HomePromotionViewModel>(Mapper.ConfigurationProvider),
             News = Context.News
                 .ProjectTo<HomeNewsViewModel>(Mapper.ConfigurationProvider)
+                .Take(3)
         };
 
         return View(homeViewModel);

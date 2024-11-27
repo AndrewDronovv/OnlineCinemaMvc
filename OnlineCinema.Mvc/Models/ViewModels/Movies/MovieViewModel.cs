@@ -1,4 +1,5 @@
 ﻿using OnlineCinema.Domain.Entities;
+using OnlineCinema.Domain.Enums;
 
 namespace OnlineCinema.Mvc.Models.ViewModels.Movies
 {
@@ -22,5 +23,9 @@ namespace OnlineCinema.Mvc.Models.ViewModels.Movies
         public string CardImagePath { get; set; }
 
         public DateTime[] SessionDates { get; set; }
+
+        public HallType HallType { get; set; }
+
+
     }
 }

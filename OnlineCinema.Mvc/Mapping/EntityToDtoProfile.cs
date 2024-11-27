@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using OnlineCinema.Domain.Entities;
+using OnlineCinema.Mvc.Models.ViewModels.Hall;
 using OnlineCinema.Mvc.Models.ViewModels.Home;
 using OnlineCinema.Mvc.Models.ViewModels.Movies;
 using OnlineCinema.Mvc.Models.ViewModels.News;
@@ -21,5 +22,6 @@ public class EntityToDtoProfile : Profile
         CreateMap<News, HomeNewsViewModel>();
         CreateMap<News, NewsViewModel>();
         CreateMap<Promotion, PromotionViewModel>();
+        CreateMap<Hall, HallViewModel>();
     }
 }

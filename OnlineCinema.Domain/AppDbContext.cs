@@ -6,7 +6,6 @@ namespace OnlineCinema.Domain;
 
 public class AppDbContext : IdentityDbContext<User>
 {
-    public DbSet<Cinema> Cinemas { get; set; }
     public DbSet<Customer> Customers { get; set; }
     public DbSet<Genre> Genres { get; set; }
     public DbSet<Hall> Halls { get; set; }

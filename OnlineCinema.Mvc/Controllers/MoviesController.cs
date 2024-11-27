@@ -23,42 +23,36 @@ public class MoviesController : BaseMvcController
             return NotFound();
         }
 
-        try
-        {
-            //Маппинг Movie в MovieViewModel через метод расширение ProjectTo()
-            var movieViewModel = await Context.Movies
-                .Include(m => m.MovieGenres)
-                .ThenInclude(mg => mg.Genre)
-                .ProjectTo<MovieViewModel>(Mapper.ConfigurationProvider)
-                .FirstOrDefaultAsync(m => m.Id == id);
+        //Маппинг Movie в MovieViewModel через метод расширение ProjectTo()
+        var movieViewModel = await Context.Movies
+            .Include(m => m.MovieGenres)
+            .ThenInclude(mg => mg.Genre)
+            .ProjectTo<MovieViewModel>(Mapper.ConfigurationProvider)
+            .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (movieViewModel == null)
-            {
-                return NotFound();
-            }
-
-            var dateNow = DateTime.Now;
-            var currentDate = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day);
-
-            var sessions = await Context.Sessions
-                 .Where(s => s.MovieId == id && s.DateStart >= currentDate)
-                 .Select(s => s.DateStart)
-                 .OrderBy(s => s)
-                 .ToListAsync();
-
-            movieViewModel.SessionDates = sessions
-                .GroupBy(s => s.ToString("dd.MM.yyyy"))
-                .Take(5)
-                .Select(s => DateTime.ParseExact(s.Key, "dd.MM.yyyy", CultureInfo.InvariantCulture))
-                .ToArray();
-
-            return View("Movie", movieViewModel);
-        }
-        catch (Exception ex)
+        if (movieViewModel == null)
         {
             return NotFound();
         }
+
+        var dateNow = DateTime.Now;
+        var currentDate = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day);
+
+        var sessions = await Context.Sessions
+             .Where(s => s.MovieId == id && s.DateStart >= currentDate)
+             .Select(s => s.DateStart)
+             .OrderBy(s => s)
+             .ToListAsync();
+
+        movieViewModel.SessionDates = sessions
+            .GroupBy(s => s.ToString("dd.MM.yyyy"))
+            .Take(5)
+            .Select(s => DateTime.ParseExact(s.Key, "dd.MM.yyyy", CultureInfo.InvariantCulture))
+            .ToArray();
+
+        return View("Movie", movieViewModel);
     }
+    
 
     [Route("kids")]
     public async Task<IActionResult> KidsMovies()

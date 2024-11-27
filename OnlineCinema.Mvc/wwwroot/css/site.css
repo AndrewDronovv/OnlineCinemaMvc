@@ -28,8 +28,8 @@ body {
 /*Логотип*/
 
 .logo-image {
-    width:65px;
-    height:auto;
+    width: 65px;
+    height: auto;
 }
 
 .custom-img-cinemalogo {
@@ -57,7 +57,7 @@ body {
 
 
 .text-white a {
-    color:white;
+    color: white;
 }
 
 
@@ -124,6 +124,6 @@ ul {
 
 .movie-card-details {
     width: 250px;
-    height:250pxpx;
+    height: 250px;
     clip-path: circle(40%);
 }

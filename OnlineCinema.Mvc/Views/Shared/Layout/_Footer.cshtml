@@ -24,13 +24,11 @@
             <div class="col-2">
                 <div class="d-flex flex-column justify-content-center">
                     <h5>Для клиентов</h5>
-                    <a href="#" class="text-decoration-none mb-2">Кинотеатры</a>
-                    <a href="#" class="text-decoration-none mb-2">Арт</a>
-                    <a href="#" class="text-decoration-none mb-2">Мультикарта</a>
-                    <a href="#" class="text-decoration-none mb-2">Акции и скидки</a>
+                    <a href="/art" class="text-decoration-none mb-2">Арт</a>
+                    <a href="/promotions" class="text-decoration-none mb-2">Акции и скидки</a>
                     <a href="#" class="text-decoration-none mb-2">Обратная связь</a>
-                    <a href="#" class="text-decoration-none mb-2">Типы залов и мест</a>
-                    <a href="#" class="text-decoration-none mb-2">Новости</a>
+                    <a asp-controller="Hall" asp-action="GetHalls" class="text-decoration-none mb-2">Типы залов и мест</a>
+                    <a asp-controller="News" asp-action="GetAll" class="text-decoration-none mb-2">Новости</a>
                     <a href="#" class="text-decoration-none mb-2">Условия покупки билетов</a>
                 </div>
             </div>

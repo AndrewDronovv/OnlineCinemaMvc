@@ -42,22 +42,15 @@
                 </div>
             </div>
             <div class="row">
-                <a href="#">Подробнее о фильме</a>
+                <a href="#">ПОДРОБНЕЕ О ФИЛЬМЕ</a>
             </div>
         </div>
     </div>
 </div>
 
-<div class="w-100 bg-secondary" style="height: 1px;"></div>
+<div class="w-100 bg-secondary full-width-line mt-3 mb-3" style="height: 1px;"></div>
 
 <div class="container">
-    <div class="row">
-        <div>
-            @{
-                <p>@Model.Name</p>
-            }
-        </div>
-    </div>
     <div class="container">
         @foreach (var sessionDate in Model.SessionDates)
         {
@@ -67,4 +60,12 @@
             </button>
         }
     </div>
+
+    @* <div class="text-center">
+        <button class="btn btn-dark filter-button" data-filter="all">All</button>
+        @foreach (var hallType in Model.)
+        {
+            <button class="btn btn-outline-secondary filter-button" data-filter="@category.Name.Replace(' ', '_')">@category.Name</button>
+        }
+    </div> *@
 </div>

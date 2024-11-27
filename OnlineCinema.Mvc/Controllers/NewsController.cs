@@ -21,22 +21,25 @@ public class NewsController : BaseMvcController
             return NotFound();
         }
 
-        try
-        {
-            var newsViewModel = await Context.News
-                .ProjectTo<NewsViewModel>(Mapper.ConfigurationProvider)
-                .FirstOrDefaultAsync(n => n.Id == id);
+        var newsViewModel = await Context.News
+            .ProjectTo<NewsViewModel>(Mapper.ConfigurationProvider)
+            .FirstOrDefaultAsync(n => n.Id == id);
 
-            if (newsViewModel == null)
-            {
-                return NotFound();
-            }
-
-            return View("News", newsViewModel);
-        }
-        catch (Exception ex)
+        if (newsViewModel == null)
         {
             return NotFound();
         }
+
+        return View("News", newsViewModel);
+    }
+
+    [Route("news")]
+    public async Task<IActionResult> GetAll()
+    {
+        var newsViewModel = await Context.News
+            .ProjectTo<NewsViewModel>(Mapper.ConfigurationProvider)
+            .ToListAsync();
+
+        return View("AllNews", newsViewModel);
     }
 }

@@ -6,9 +6,18 @@
     {
         <div class="row">
             <div class="col @(count % 2 == 0 ? "reverse": "normal")">
-                <a asp-controller="Promotions" asp-action="Get" asp-route-name="@promotion.Name">
-                    <img src="@promotion.ImagePath" class="rounded-3" alt="Alternate Text" />
-                </a>
+                @if (string.IsNullOrWhiteSpace(promotion.Link))
+                {
+                    <a asp-controller="Promotions" asp-action="Get" asp-route-name="@promotion.Name">
+                        <img src="@promotion.ImagePath" class="rounded-3" alt="Alternate Text" />
+                    </a>
+                }
+                else
+                {
+                    <a href="@promotion.Link">
+                        <img src="@promotion.ImagePath" class="rounded-3" alt="Alternate Text" />
+                    </a>
+                }
                 <div>
                     <h3>
                         @promotion.DisplayName

@@ -2,8 +2,12 @@
 
 public enum HallType
 {
-    Comfort,
     Common,
     VIP,
-    AllHall,
+    Comfort,
+    DolbyAtmos,
+    AtmosComfort,
+    IMAX,
+    DBOX,
+    KidHall
 }
