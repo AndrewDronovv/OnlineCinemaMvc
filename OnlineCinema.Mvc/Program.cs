@@ -5,7 +5,6 @@ using OnlineCinema.Domain.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 string connectionString = builder.Configuration.GetConnectionString("Default");
@@ -16,13 +15,13 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddIdentity<User, IdentityRole>(opt =>
 {
     opt.Password.RequireDigit = false;
-    opt.Password.RequiredLength = 5;
     opt.Password.RequireUppercase = false;
-    opt.Lockout.MaxFailedAccessAttempts = 10;
-    opt.User.RequireUniqueEmail = true;
     opt.SignIn.RequireConfirmedEmail = false;
+    opt.User.RequireUniqueEmail = true;
     opt.SignIn.RequireConfirmedAccount = false;
-    opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+    opt.Password.RequiredLength = 5;
+    opt.Lockout.MaxFailedAccessAttempts = 10;
+    opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 })
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
@@ -31,7 +30,6 @@ builder.Services.AddIdentity<User, IdentityRole>(opt =>
 var app = builder.Build();
 
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

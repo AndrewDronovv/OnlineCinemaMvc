@@ -1,3 +1,11 @@
 ﻿@model NewsViewModel
 
-<p class="text-white">@Model.Name</p>
+<h1 class="text-white">@Model.Name</h1>
+<div class="container">
+    <p class="text-white-50">@Model.Date</p>
+    <img src="~/@Model.ImagePath" alt="somepicture" />
+    <div class="text-white mt-3">
+        <h5>@Model.Name</h5>
+        <p class="mt-3">@Model.Description</p>
+    </div>
+</div>

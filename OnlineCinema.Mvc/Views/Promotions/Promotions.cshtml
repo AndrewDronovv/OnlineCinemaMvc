@@ -1,27 +1,40 @@
 ﻿@model IEnumerable<PromotionViewModel>
 
-<h1 class="text-white pt-5">Акции и скидки</h1>
-<div class="pt-5 pb-5">
-    @{
-        int count = 1;
-        foreach (var promotion in Model)
-        {
-            <div class="row">
-                <div class="col @(count % 2 == 0 ? "reverse" : "normal")">
+@{
+    int count = 1;
+    foreach (var promotion in Model)
+    {
+        <div class="row">
+            <div class="col @(count % 2 == 0 ? "reverse": "normal")">
+                @if (string.IsNullOrWhiteSpace(promotion.Link))
+                {
                     <a asp-controller="Promotions" asp-action="Get" asp-route-name="@promotion.Name">
                         <img src="@promotion.ImagePath" class="rounded-3" alt="Alternate Text" />
                     </a>
-                    <div>
-                        <h3>@promotion.DisplayName</h3>
-                        <p>@promotion.Description</p>
-                        <a class="btn btn-primary promotionBtnColor" asp-controller="Promotions" asp-action="Get" asp-route-name="@promotion.Name">
-                            @promotion.ButtonText
-                        </a>
-                    </div>
+                }
+                else
+                {
+                    <a href="@promotion.Link">
+                        <img src="@promotion.ImagePath" class="rounded-3" alt="Alternate Text" />
+                    </a>
+                }
+                <div>
+                    <h3>
+                        @promotion.DisplayName
+                    </h3>
+                    <p>@promotion.Description</p>
+                    @if (string.IsNullOrWhiteSpace(promotion.Link))
+                    {
+                        <a class="btn btn-primary promotionBtnColor" asp-controller="Promotions" asp-action="Get" asp-route-name="@promotion.Name">@promotion.ButtonText</a>
+                    }
+                    else
+                    {
+                        <a href="@promotion.Link" class="btn btn-primary promotionBtnColor">@promotion.ButtonText</a>
+                    }
                 </div>
             </div>
-            @(count++)
-            ;
-        }
+        </div>
+        @(count++)
+        ;
     }
-</div>
+}

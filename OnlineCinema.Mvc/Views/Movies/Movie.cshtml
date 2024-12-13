@@ -22,12 +22,11 @@
     }
 }
 
+
 <div class="container-fluid mt-4">
     <div class="row align-items-center">
-        <div class="col-md-2">
-            <img src="~/@Model.CardImagePath" alt="some picture" class="img-fluid rounded custom-img">
-        </div>
         <div class="col-md align-self-start text-white">
+            <input id="MovieId" hidden class="d-none" value="@Model.Id"/>
             <h1>@Model.Name</h1>
             <div class="row">
                 <div class="col-2">
@@ -50,22 +49,49 @@
 
 <div class="w-100 bg-secondary full-width-line mt-3 mb-3" style="height: 1px;"></div>
 
-<div class="container">
-    <div class="container">
+<div class="container-fluid">
+    
+    <div class="d-flex align-items-center mb-3" style="gap:15px">
         @foreach (var sessionDate in Model.SessionDates)
         {
-            <button class="btn btn-outline text-bg-light">
+            <button class="btn btn-outline btn-movie-session" data-date="@sessionDate">
                 @sessionDate.ToString("M")
-                @GetDay(sessionDate)
+                <div>@GetDay(sessionDate)</div>
             </button>
         }
     </div>
-
-    @* <div class="text-center">
-        <button class="btn btn-dark filter-button" data-filter="all">All</button>
-        @foreach (var hallType in Model.)
+    <div class="d-flex align-items-center mb-3" style="gap:15px">
+        <button class="btn btn-outline text-bg-light" id="btnAllMovie">
+            Все
+        </button>
+        @foreach (var hall in Model.Halls)
         {
-            <button class="btn btn-outline-secondary filter-button" data-filter="@category.Name.Replace(' ', '_')">@category.Name</button>
+            <button class="btn btn-outline text-bg-light hall-filter-btn" data-hall-id="@hall.Id">
+                @hall.Name
+            </button>
         }
-    </div> *@
+    </div>
 </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <img src="~/@Model.CardImagePath" alt="some picture" class="img-fluid rounded custom-img">
+        </div>
+        <div class="col-md-2 text-white">
+            <p>@Model.AgeRating</p>
+            <p>@Model.Name</p>
+            <p>@Model.Duration мин</p>
+        </div>
+        <div class="col-md-8 text-white">
+            <div id="sessions-container" class="row">
+                <!-- Здесь будут добавлены отфильтрованные сессии -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/js/views/movie/Movie.js"></script>
+}               

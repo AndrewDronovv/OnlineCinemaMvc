@@ -77,7 +77,8 @@ document.getElementById("RegistrationButton").addEventListener("click", function
         LastName: lastname,
         Email: email,
         Password: password,
-        IsMan: true,
+
+        IsMan: gender,
 
     })
         .then(function (response) {

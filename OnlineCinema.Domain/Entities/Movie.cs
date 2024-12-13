@@ -3,7 +3,7 @@
 namespace OnlineCinema.Domain.Entities;
 
 public class Movie : Entity
-{
+{                                                   
     public string Name { get; set; }
     public string OriginalName { get; set; }
     public ICollection<MovieGenre> MovieGenres { get; set; }

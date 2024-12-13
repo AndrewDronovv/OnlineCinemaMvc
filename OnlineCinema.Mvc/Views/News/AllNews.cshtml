@@ -5,17 +5,19 @@
     <div class="row">
         @foreach (var news in Model)
         {
-            <div class="col-4">
-                <div class="card mb-3">
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="card card-news h-100">
                     <a asp-controller="News" asp-action="GetNewsById" asp-route-id="@news.Id">
-                        <img src="@news.ImagePath" class="card-img-top" alt="Some picture">
+                        <img src="@news.ImagePath" class="card-img-top card-img-top-news" alt="Some picture">
                     </a>
-                    <div class="card-body background-card-color">
-                        <a class="card-news-text" asp-controller="News" asp-action="GetNewsById" asp-route-id="@news.Id">
-                            <h5 class="card-title">@news.Name</h5>
+                    <div class="card-body card-body-news background-card-color d-flex flex-column">
+                        <a class="card-news-text mb-auto" asp-controller="News" asp-action="GetNewsById" asp-route-id="@news.Id">
+                            <h5 class="card-title text-white">@news.Name</h5>
                         </a>
-                        <p>@news.Description</p>
-                        <p class="card-text"><small class="text-body-secondary">@news.Date.ToString("f")</small></p>
+                        <div class="text-white-50">
+                            <p>@news.Description</p>
+                            <p class="card-text mt-auto"><small class="text-body-secondary">@news.Date.ToString("f")</small></p>
+                        </div>
                     </div>
                 </div>
             </div>

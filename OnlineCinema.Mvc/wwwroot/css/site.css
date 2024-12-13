@@ -23,8 +23,6 @@ body {
 }
 
 
-
-
 /*Логотип*/
 
 .logo-image {
@@ -54,13 +52,9 @@ body {
     color: white;
 }
 
-
-
 .text-white a {
     color: white;
 }
-
-
 
 .promotionBtnColor {
     background-color: #bd257f;
@@ -69,7 +63,6 @@ body {
     .promotionBtnColor:hover {
         background-color: #bd257f;
     }
-
 
 /*Соцсети footer*/
 
@@ -109,6 +102,33 @@ ul {
     color: white;
 }
 
+/*Карточка фильма, выбор сеанса и оплата*/
+
+.movie-card-details {
+    width: 250px;
+    height: 250px;
+    clip-path: circle(40%);
+}
+
+/*Карточка новостей*/
+
+.card-news {
+    height: 100%; /*Задает равную высоту для всех карточек*/
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+}
+
+.card-body-news {
+    flex-grow: 1; /*Задает равное распределение пространства между карточками*/
+}
+
+.card-img-top-news {
+    height: 200px; /*Задает фиксированную высоту изображения*/
+    object-fit: cover; /*Указывает, как изображение должно вписываться в контейнер*/
+}
+
+/*Карточки на главной странице*/
 .card-news-text {
     text-decoration: none;
     color: black;
@@ -119,11 +139,27 @@ ul {
         color: #c2255a
     }
 
-
-/*Карточка фильма, выбор сеанса и оплата*/
-
-.movie-card-details {
-    width: 250px;
-    height: 250px;
-    clip-path: circle(40%);
+/*Кнопка отображения сессий фильма*/
+.btn-movie-session {
+    padding: 0px 8px;
+    margin: 5px;
+    background-color: transparent;
+    border: 1px solid grey;
+    color: white;
 }
+
+    .btn-movie-session:hover {
+        border: 1px solid #bd257f;
+        color: #bd257f;
+    }
+
+
+/*Слайдер*/
+.custom-carousel {
+    width: 100%;
+}
+
+    .custom-carousel img {
+        width: 100%;
+        height: auto;
+    }
