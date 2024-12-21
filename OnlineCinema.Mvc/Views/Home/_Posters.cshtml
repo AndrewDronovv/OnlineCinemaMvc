@@ -4,13 +4,15 @@
     @foreach (var poster in Model)
     {
         <div class="col">
-            <div class="card h-100">
+            <div class="card card-movie-poster h-100 custom-card">
                 <a asp-controller="Movies" asp-action="Get" asp-route-id="@poster.Id">
-                    <img src="@poster.CardImagePath" class="card-img-top" alt="Some picture">
+                    <img src="@poster.CardImagePath" class="card-img-custom" alt="Some picture">
                 </a>
                 <div class="card-body">
-                    <h5 class="card-title">@poster.Name</h5>
                     <p class="card-text">@poster.AgeRating+</p>
+                </div>
+                <div class="overlay">
+                    <div class="movie-title">@poster.Name</div>
                 </div>
             </div>
         </div>

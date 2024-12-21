@@ -1,68 +1,94 @@
-﻿const hallButtons = document.querySelectorAll('.hall-filter-btn');
-hallButtons.forEach(button => {
-    button.addEventListener('click', function () {
-        const hallId = this.getAttribute('data-hall-id');
-
-        axios.get('/Movies/GetAllSessions', {
-            params: { HallId: hallId }
-        })
-            .then(response => {
-                updateSessions(response.data);
-            })
-            .catch(error => {
-                console.error('Ошибка получения сессий:', error);
-            });
-    });
-});
-
-const allMoviesButton = document.getElementById('btnAllMovie');
-allMoviesButton.addEventListener('click', function () {
-    axios
-        .get('/Movies/GetAllSessions', {
-            params: {
-                MovieId: +document.getElementById('MovieId').value
-            }
-        })
+﻿const getAllSessions = (input) => {
+    return axios.get('/Movies/GetAllSessions', {
+        params: input
+    })
         .then(response => {
-            if (response.data.length > 0) {
-                updateSessions(response.data[0].sessions);
-            }
-
+            return response.data;
         })
         .catch(error => {
             console.error('Ошибка получения сессий:', error);
         });
+};
+
+getAllSessions({
+    movieId: +document.getElementById('MovieId').value,
+    date: new Date()
+})
+    .then((movies) => {
+        if (!movies || movies.length == 0) {
+            return;
+        }
+        const movie = movies[0];
+        updateSessions(movie.sessions);
+    });
+
+
+//Все остальные кнопки, которые отвечают за виды холлов
+//const hallButtons = document.querySelectorAll('.btn-hall-other');
+//hallButtons.forEach(button => {
+//    button.addEventListener('click', function () {
+//        const hallId = this.getAttribute('data-hall-id');
+
+//        getAllSessions({
+//            movieId: +document.getElementById('MovieId').value,
+//            hallId: hallid,
+//            //date: new Date()
+//        })
+//            .then((movies) => {
+//                if (!movies || movies.length == 0) {
+//                    return;
+//                }
+//                const movie = movies[0];
+//                updateSessions(movie.sessions);
+//            });
+//    });
+//});
+
+//Кнопка, которая отвечает за все виды холлов
+const allHallButtons = document.getElementById('btnAllHalls');
+allHallButtons.addEventListener('click', function () {
+    getAllSessions({
+        movieId: +document.getElementById('MovieId').value,
+        date: new Date()
+    })
+        .then((movies) => {
+            if (!movies || movies.length == 0) {
+                return;
+            }
+            const movie = movies[0];
+            updateSessions(movie.sessions);
+        });
 });
 
+//Отрисовка сессий фильма и вида зала
 function updateSessions(sessions) {
     const sessionsContainer = document.getElementById('sessions-container');
     sessionsContainer.innerHTML = '';
 
     sessions.forEach(session => {
-        //const sessionHtml = `
-        //    <div class="col-4">
-        //        <div class="card mb-3">
-        //            <a href="/News/GetNewsById/${session.Movie.Id}">
-        //                <img src="${session.Movie.ImagePath}" class="card-img-top" alt="Some picture">
-        //            </a>
-        //            <div class="card-body background-card-color">
-        //                <a class="card-news-text" href="/News/GetNewsById/${session.Movie.Id}">
-        //                    <h5 class="card-title">${session.Movie.Name}</h5>
-        //                </a>
-        //                <p>${session.Description}</p>
-        //                <p class="card-text"><small class="text-body-secondary">${new Date(session.DateStart).toLocaleString()}</small></p>
-        //            </div>
-        //        </div>
-        //    </div>
-        //    `;
+        const movieTime = dayjs(session.dateStart).format('HH:mm');
+        const movieHall = session.hall.name;
 
+        // Отрисовка кнопок сессий и видов зала
         const sessionHtml = `
-            <div class="col-4">
+            <div class="col-1 ms-2">
                 <a class="btn btn-outline-primary" href="#">
-                    ${new Date(session.dateStart).toLocaleString()}
+                    ${movieTime}
                 </a>
+                <div class="movie-info ms-2">
+                    <p>${movieHall ? movieHall : 'Unknown Hall'}</p>
+                </div>
             </div>
-            `;
+        `;
         sessionsContainer.insertAdjacentHTML('beforeend', sessionHtml);
     });
+
+    const sessionButtons = document.querySelectorAll('.btn-movie-session');
+    sessionButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            sessionButtons.forEach(btn => btn.classList.remove('active'));
+
+            this.classList.add('active');
+        })
+    })
 }

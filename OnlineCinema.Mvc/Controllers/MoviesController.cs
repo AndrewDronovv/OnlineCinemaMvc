@@ -2,6 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Versioning;
 using OnlineCinema.Domain;
 using OnlineCinema.Domain.Entities;
 using OnlineCinema.Mvc.Dto;
@@ -59,7 +60,7 @@ public class MoviesController : BaseMvcController
 
         return View("Movie", movieViewModel);
     }
-    
+
 
     [Route("kids")]
     public async Task<IActionResult> KidsMovies()
@@ -98,19 +99,21 @@ public class MoviesController : BaseMvcController
         return View("ArtMovies", movieViewModels);
     }
 
-    [HttpGet]
-    [Route("[controller]/[action]")]
+    [HttpGet("[controller]/[action]")]
     public async Task<IActionResult> GetAllSessions([FromQuery] GetAllSessionsDto input)
     {
-        IQueryable<Session> query = Context.Sessions;
+        IQueryable<Session> query = Context.Sessions
+            .Include(s => s.Hall)
+            .Include(s => s.Movie);
 
         if (input.Date.HasValue)
         {
-            var dateEnd = input.Date.Value.AddDays(1).AddSeconds(-1);
-            query = query.Where(s => s.DateStart >= input.Date && s.DateStart <= dateEnd);
+            var inputDate = new DateTime(input.Date.Value.Year, input.Date.Value.Month, input.Date.Value.Day);
+            var dateEnd = inputDate.AddDays(1).AddSeconds(-1);
+            query = query.Where(s => s.DateStart >= inputDate && s.DateStart <= dateEnd);
         }
 
-        if(input.HallId.HasValue)
+        if (input.HallId.HasValue)
         {
             query = query.Where(s => s.HallId == input.HallId);
         }
@@ -124,7 +127,7 @@ public class MoviesController : BaseMvcController
 
         var result = new List<MovieWithSessionsViewModel>();
 
-        foreach(var g in sessions.GroupBy(s => s.MovieId))
+        foreach (var g in sessions.GroupBy(s => s.MovieId))
         {
             var movie = await Context.Movies.FindAsync(g.Key);
 
