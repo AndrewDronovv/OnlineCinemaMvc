@@ -20,39 +20,118 @@ html {
 body {
     margin: 0;
     padding: 0;
-    margin-bottom: 60px;
     background-color: hsl(0, 0%, 18%);
 }
 
+/* Header */
 
-/* Логотип */
-.logo-image {
-    width: 65px;
+/* Логотип в шапке и в футер */
+.logo__image__custom {
+    width: 75px;
     height: auto;
 }
-
-.custom-img-cinemalogo {
-    width: 120px;
-    height: auto;
-}
-
 
 /* Меню в шапке */
-.header-navbar-custom {
-    background-color: #2a2a2a;
+.header__navbar__custom a {
+    margin: 10px 5px 0 0;
+    padding: 0;
     color: #fff;
 }
 
-    .header-navbar-custom a {
-        color: #fff;
-        padding: 10px 0;
+    .header__navbar__custom a:hover {
+        background-color: #2a2a2a;
+        color: #bd257f;
+    }
+
+/* Ссылка на личный кабинет */
+.header__personal__account .nav-link:hover {
+    color: #bd257f !important;
+    box-shadow: none !important;
+}
+
+/* Окно регистрации пользователя */
+/* Кнопки Вход и Регистрация */
+.personal__account__navbuttons .nav-link {
+    padding: 5px;
+    color: black !important;
+}
+
+    .personal__account__navbuttons .nav-link:hover {
+        color: #bd257f !important;
+    }
+
+/* Кнопки Email и Телефон */
+.contact__btns__custom .nav-link {
+    padding: 5px 10px;
+    margin: 0 10px 3px 0;
+    border: 1px solid #bd257f;
+    color: #bd257f;
+}
+
+    .contact__btns__custom .nav-link.active {
+        background-color: #bd257f !important;
+        color: white !important;
+    }
+
+    .contact__btns__custom .nav-link:hover {
+        color: #bd257fa9;
+    }
+
+.contact__btns__custom:active,
+.contact__btns__custom:focus {
+    border-color: #c60085d4;
+    box-shadow: none !important;
+}
+
+
+/* Поля ввода данных для логина */
+.personal__contact__input .form-control:focus {
+    border-color: #bd257f !important;
+    box-shadow: 0 0 3px rgba(189, 37, 127, 0.5) !important;
+}
+
+.personal__contact__input .input-group:focus-within .input-group-text i {
+    color: #bd257f !important;
+}
+
+/* Текст Забыли пароль */
+.forget__password__text {
+    text-decoration: none !important;
+    color: #bd257f;
+}
+
+    .forget__password__text:hover {
+        color: #bd257fab;
+    }
+
+/* Кнопка Войти */
+.enter__btn__custom {
+    background-color: #bd257f96 !important;
+    color: white !important;
+    border-color: transparent;
+}
+
+    .enter__btn__custom:hover {
+        background-color: #bd257fa4 !important;
+        color: white !important;
+        border-color: transparent;
+    }
+
+    .enter__btn__custom:focus {
+        box-shadow: none !important;
+    }
+
+/* Текст Пользовательского соглашения */
+.personal__agreement__text {
+    color: #bd257f;
+}
+
+    .personal__agreement__text:hover {
         text-decoration: none;
     }
 
-        .header-navbar-custom a:hover {
-            background-color: #2a2a2a;
-            color: #fff;
-        }
+
+
 
 
 /* Расположение карточек акций поочередно слева и справа */
@@ -69,13 +148,6 @@ body {
     align-items: center;
     color: white;
 }
-
-
-/* Цвет текста ссылок */
-.text-white a {
-    color: white;
-}
-
 
 /* Кнопка УЗНАТЬ БОЛЬШЕ в news на главной странице */
 .promotionBtnStyle {
@@ -98,21 +170,15 @@ body {
     }
 
 
-/* Соцсети footer */
-.btn-circle {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    padding: 10px;
-    text-align: center;
-    font-size: 16px;
-    line-height: 1.5;
+
+/* Цвет текста ссылок */
+.text-white a {
+    color: white;
 }
 
 .promotion-card h {
     color: white;
 }
-
 
 /* Карточка фильма, выбор сеанса и оплата */
 .movie-card-details {
@@ -287,7 +353,6 @@ body {
         box-shadow: none !important;
     }
 
-
 /*Остальные кнопки остальных видов холла*/
 .btn-hall-other {
     padding: 0px 8px;
@@ -322,36 +387,14 @@ body {
     }
 
 
-
-
-/* Окно регистрации пользователя */
-.personal-account-navbuttons .nav-link {
-    padding: 5px;
-    margin: 0 5px;
-    color: black !important;
-}
-
-    .personal-account-navbuttons .nav-link:hover {
-        color: #bd257f !important;
-    }
-
-
-.email-btn-custom {
-    padding: 3px 18px;
-    margin: 10px 8px 10px 0;
-    color: white;
-    background-color: transparent;
-    border: 1px solid grey;
-}
-
-.email-btn-custom:hover {
-    border: 1px solid #bd257f !important;
-    color: #bd257f !important;
-}
-
-
-.email-btn-custom:active,
-.email-btn-custom:focus {
-    border: 1px solid #c60085d4 !important;
-    box-shadow: none !important;
+/* Footer */
+/* Соцсети footer */
+.btn-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.5;
 }

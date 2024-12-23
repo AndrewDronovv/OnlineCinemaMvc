@@ -3,9 +3,9 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <div class="d-flex justify-content-start personal-account-navbuttons me-5">
-                    <ul class="nav nav-underline pb-3" role="tablist">
-                        <li class="nav-item me-3">
+                <div class="d-flex justify-content-start personal__account__navbuttons">
+                    <ul class="nav nav-underline" role="tablist">
+                        <li class="nav-item me-1">
                             <a class="nav-link active" id="LoginTab" data-bs-toggle="tab" href="#Login" role="tab">ВХОД</a>
                         </li>
                         <li class="nav-item">
@@ -25,11 +25,11 @@
                             <div class="container-fluid mb-2">
                                 <div class="row d-flex justify-content-between align-items-center">
                                     <div class="col">
-                                        <p class="mt-2">Способ авторизации</p>
+                                        <p class="mt-2 fw-bolder">Способ авторизации</p>
 
-                                        <ul class="nav nav-pills mb-2" id="pills-tab" role="tablist">
+                                        <ul class="nav nav-pills mb-2 contact__btns__custom" id="pills-tab" role="tablist">
                                             <li class="nav-item" role="presentation">
-                                                <button class="nav-link active email-btn-custom" id="EmailBtn" data-bs-toggle="pill" data-bs-target="#pills-email" type="button" role="tab">Email</button>
+                                                <button class="nav-link active " id="EmailBtn" data-bs-toggle="pill" data-bs-target="#pills-email" type="button" role="tab">Email</button>
                                             </li>
                                             <li class="nav-item" role="presentation">
                                                 <button class="nav-link" id="PhoneBtn" data-bs-toggle="pill" data-bs-target="#pills-phone" type="button" role="tab">Телефон</button>
@@ -37,13 +37,13 @@
                                     </div>
                                     <div class="col">
                                         <p>
-                                            Нажимая кнопку входа, вы принимаете условия <a href="#">Пользовательского соглашения</a>
+                                            Нажимая кнопку входа, вы принимаете условия <a class="personal__agreement__text" href="#">Пользовательского соглашения</a>
                                         </p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-6 personal__contact__input">
                                 <div class="input-group mb-3" id="EmailWrapper">
                                     <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
                                     <input id="Email" type="text" class="form-control" placeholder="Ваш email">
@@ -61,10 +61,11 @@
                                         <input class="form-check-input" type="checkbox" id="FlexCheckIndeterminate">
                                         <label class="form-check-label ms-2" for="FlexCheckIndeterminate">Запомнить меня</label>
                                     </div>
-                                    <a href="#">Забыли пароль?</a>
+                                    <a class="forget__password__text" href="#">Забыли пароль?</a>
                                 </div>
-                                <button type="button" class="btn btn-primary w-100 mt-3 mb-3" id="LoginButton">Войти</button>
+                                <button type="button" class="btn btn-primary w-100 mt-3 mb-3 enter__btn__custom" id="LoginButton">Войти</button>
                             </div>
+
 
                         </div>
                     </div>
