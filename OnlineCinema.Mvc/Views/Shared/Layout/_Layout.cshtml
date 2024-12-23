@@ -8,11 +8,13 @@
 </head>
 <body>
     @await Html.PartialAsync("_Header.cshtml")
+    @RenderSection("Banner", false)
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+    @await Html.PartialAsync("_PersonalAccountModal.cshtml")
     @await Html.PartialAsync("_Footer.cshtml")
 
     @await Html.PartialAsync("_Scripts.cshtml")

@@ -24,6 +24,7 @@ body {
     background-color: hsl(0, 0%, 18%);
 }
 
+
 /* Логотип */
 .logo-image {
     width: 65px;
@@ -34,6 +35,24 @@ body {
     width: 120px;
     height: auto;
 }
+
+
+/* Меню в шапке */
+.header-navbar-custom {
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+    .header-navbar-custom a {
+        color: #fff;
+        padding: 10px 0;
+        text-decoration: none;
+    }
+
+        .header-navbar-custom a:hover {
+            background-color: #2a2a2a;
+            color: #fff;
+        }
 
 
 /* Расположение карточек акций поочередно слева и справа */
@@ -51,10 +70,12 @@ body {
     color: white;
 }
 
+
 /* Цвет текста ссылок */
 .text-white a {
     color: white;
 }
+
 
 /* Кнопка УЗНАТЬ БОЛЬШЕ в news на главной странице */
 .promotionBtnStyle {
@@ -91,6 +112,7 @@ body {
 .promotion-card h {
     color: white;
 }
+
 
 /* Карточка фильма, выбор сеанса и оплата */
 .movie-card-details {
@@ -205,13 +227,14 @@ body {
     transition: height 0.2s ease-out;
 }
 
+
 /* Кнопка отображения дней показов фильма при покупке билета */
 .btn-movie-session {
     padding: 3px 18px;
     margin: 10px 8px 10px 0;
+    color: white;
     background-color: transparent;
     border: 1px solid grey;
-    color: white;
 }
 
     .btn-movie-session:hover {
@@ -224,16 +247,27 @@ body {
         color: #c60085d4;
     }
 
+    .btn-movie-session:active,
+    .btn-movie-session:focus {
+        border: 1px solid #c60085d4 !important;
+        box-shadow: none !important;
+    }
 
 
+/* Кнопка Все холлы*/
 .btn-hall-all {
     padding: 0px 8px;
     margin: 5px;
     background-color: transparent !important;
-    border: 1px solid grey !important;
     color: white !important;
     border-radius: 15px;
+    border: 1px solid grey !important;
 }
+
+    .btn-hall-all:hover {
+        border: 1px solid #bd257f !important;
+        color: #bd257f !important;
+    }
 
     .btn-hall-all.active {
         padding: 0px 8px;
@@ -246,11 +280,15 @@ body {
         color: #bd257f !important;
     }
 
-    .btn-hall-all:hover {
+    .btn-hall-all:active,
+    .btn-hall-all:focus {
+        border-color: #c60085d4;
         border: 1px solid #bd257f !important;
-        color: #bd257f !important;
+        box-shadow: none !important;
     }
 
+
+/*Остальные кнопки остальных видов холла*/
 .btn-hall-other {
     padding: 0px 8px;
     margin: 5px;
@@ -264,3 +302,56 @@ body {
         border: 1px solid #bd257f !important;
         color: #bd257f !important;
     }
+
+    .btn-hall-other.active {
+        padding: 0px 8px;
+        margin: 5px;
+        background-color: transparent !important;
+        border: 1px solid grey !important;
+        color: white !important;
+        border-radius: 15px;
+        border: 1px solid #bd257f !important;
+        color: #bd257f !important;
+    }
+
+    .btn-hall-other:active,
+    .btn-hall-other:focus {
+        border-color: #c60085d4;
+        border: 1px solid #bd257f !important;
+        box-shadow: none !important;
+    }
+
+
+
+
+/* Окно регистрации пользователя */
+.personal-account-navbuttons .nav-link {
+    padding: 5px;
+    margin: 0 5px;
+    color: black !important;
+}
+
+    .personal-account-navbuttons .nav-link:hover {
+        color: #bd257f !important;
+    }
+
+
+.email-btn-custom {
+    padding: 3px 18px;
+    margin: 10px 8px 10px 0;
+    color: white;
+    background-color: transparent;
+    border: 1px solid grey;
+}
+
+.email-btn-custom:hover {
+    border: 1px solid #bd257f !important;
+    color: #bd257f !important;
+}
+
+
+.email-btn-custom:active,
+.email-btn-custom:focus {
+    border: 1px solid #c60085d4 !important;
+    box-shadow: none !important;
+}

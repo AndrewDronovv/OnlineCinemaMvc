@@ -36,7 +36,6 @@
                     }
                 </div>
                 <div class="col">
-
                     <p>@Model.Duration мин</p>
                 </div>
             </div>
@@ -54,7 +53,7 @@
     <div class="d-flex align-items-center">
         @foreach (var sessionDate in Model.SessionDates)
         {
-            <button class="btn btn-outline btn-movie-session @(GetDay(sessionDate) == "сегодня" ? "active" : "")" data-date="@sessionDate">
+            <button class="btn btn-outline btn-movie-session @(GetDay(sessionDate) == "сегодня" ? "active" : "")" data-date="@sessionDate.ToString("dd.MM.yyyy")">
                 @sessionDate.ToString("M")
                 <div>@GetDay(sessionDate)</div>
             </button>

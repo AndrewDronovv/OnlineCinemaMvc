@@ -1,14 +1,14 @@
 ﻿<header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg header-navbar-custom">
+        <div class="container">
             <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                <img src="~/images/logo/logo.png" alt="Logo" class="logo-image"/>
+                <img src="~/images/logo/logo.png" alt="Logo" class="logo-image" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#NavbarSupportedContent" aria-controls="NavbarSupportedContent" aria-expanded="false">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="NavbarSupportedContent">
-                <ul class="nav nav-underline  me-auto mb-2">
+            <div class="collapse navbar-collapse d-flex justify-content-between" id="NavbarSupportedContent">
+                <ul class="nav nav-underline">
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Promotions" asp-action="Promotions">АКЦИИ</a>
                     </li>
@@ -19,10 +19,10 @@
                         <a class="nav-link" asp-controller="Movies" asp-action="ArtMovies">АРТ</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#PersonalAccountModal" href="#">
-                            <i class="fa-regular fa-user me-2"></i>Личный кабинет
+                        <a class="nav-link text-white" data-bs-toggle="modal" data-bs-target="#PersonalAccountModal" href="#">
+                            <i class="fa-regular fa-user me-1"></i>Личный кабинет
                         </a>
                     </li>
                 </ul>

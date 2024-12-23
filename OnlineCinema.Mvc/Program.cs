@@ -2,6 +2,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using OnlineCinema.Domain;
 using OnlineCinema.Domain.Entities;
+using System.Globalization;
+
+CultureInfo.DefaultThreadCurrentCulture = CultureInfo.GetCultureInfo("ru-RU");
+CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.GetCultureInfo("ru-RU");
 
 var builder = WebApplication.CreateBuilder(args);
 

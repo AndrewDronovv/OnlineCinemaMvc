@@ -106,9 +106,8 @@ public class MoviesController : BaseMvcController
             .Include(s => s.Hall)
             .Include(s => s.Movie);
 
-        if (input.Date.HasValue)
+        if (DateTime.TryParseExact(input.Date, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime inputDate))
         {
-            var inputDate = new DateTime(input.Date.Value.Year, input.Date.Value.Month, input.Date.Value.Day);
             var dateEnd = inputDate.AddDays(1).AddSeconds(-1);
             query = query.Where(s => s.DateStart >= inputDate && s.DateStart <= dateEnd);
         }
