@@ -36,19 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const allHallButton = document.getElementById('btnAllHalls');
     if (allHallButton) {
         allHallButton.addEventListener('click', function () {
-            const hallButtons = document.querySelectorAll('.btn-hall-other');
+            const hallButtons = document.querySelectorAll('.hall__other__btn');
             hallButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
 
             handleSessionsUpdate({
                 movieId: +movieIdElement.value,
-                date: document.querySelector('.btn-movie-session.active')?.getAttribute('data-date')
+                date: document.querySelector('.movie__session__btn.active')?.getAttribute('data-date')
             });
         });
     }
 
     /* Обработчики для кнопок залов */
-    const hallButtons = document.querySelectorAll('.btn-hall-other');
+    const hallButtons = document.querySelectorAll('.hall__other__btn');
     hallButtons.forEach(button => {
         button.addEventListener('click', function () {
             hallButtons.forEach(btn => btn.classList.remove('active'));
@@ -58,19 +58,19 @@ document.addEventListener('DOMContentLoaded', () => {
             handleSessionsUpdate({
                 movieId: +movieIdElement.value,
                 hallId: this.getAttribute('data-hall-id'),
-                date: document.querySelector('.btn-movie-session.active')?.getAttribute('data-date')
+                date: document.querySelector('.movie__session__btn.active')?.getAttribute('data-date')
             });
         });
     });
 
     /* Обработчики событий для кнопок фильтрации сессий */
-    const sessionFilterButtons = document.querySelectorAll('.btn-movie-session');
+    const sessionFilterButtons = document.querySelectorAll('.movie__session__btn');
     sessionFilterButtons.forEach(button => {
         button.addEventListener('click', function () {
             sessionFilterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
 
-            const hallId = document.querySelector('.btn-hall-other.active')?.getAttribute('data-hall-id');
+            const hallId = document.querySelector('.hall__other__btn.active')?.getAttribute('data-hall-id');
 
             handleSessionsUpdate({
                 movieId: +movieIdElement.value,

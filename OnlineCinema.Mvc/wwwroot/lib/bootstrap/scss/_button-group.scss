@@ -10,7 +10,7 @@
     flex: 1 1 auto;
   }
 
-  // Bring the hover, focused, and "active" buttons to the front to overlay
+  // Bring the hover, focused, and "active" buttons to the front to movie__card__overlay
   // the borders properly
   > .btn-check:checked + .btn,
   > .btn-check:focus + .btn,

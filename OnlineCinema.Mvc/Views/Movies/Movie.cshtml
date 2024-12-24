@@ -53,19 +53,19 @@
     <div class="d-flex align-items-center">
         @foreach (var sessionDate in Model.SessionDates)
         {
-            <button class="btn btn-outline btn-movie-session @(GetDay(sessionDate) == "сегодня" ? "active" : "")" data-date="@sessionDate.ToString("dd.MM.yyyy")">
+            <button class="btn btn-outline movie__session__btn @(GetDay(sessionDate) == "сегодня" ? "active" : "")" data-date="@sessionDate.ToString("dd.MM.yyyy")">
                 @sessionDate.ToString("M")
                 <div>@GetDay(sessionDate)</div>
             </button>
         }
     </div>
     <div class="d-flex align-items-center">
-        <button class="btn btn-outline btn-hall-all active" id="btnAllHalls">
+        <button class="btn btn-outline all__hall__btn active" id="btnAllHalls">
             Все
         </button>
         @foreach (var hall in Model.Halls)
         {
-            <button class="btn btn-outline btn-hall-other" data-hall-id="@hall.Id">
+            <button class="btn btn-outline hall__other__btn" data-hall-id="@hall.Id">
                 @hall.Name
             </button>
         }

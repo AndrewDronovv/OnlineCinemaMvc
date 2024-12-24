@@ -21,7 +21,7 @@
   --#{$prefix}card-height: #{$card-height};
   --#{$prefix}card-color: #{$card-color};
   --#{$prefix}card-bg: #{$card-bg};
-  --#{$prefix}card-img-overlay-padding: #{$card-img-overlay-padding};
+  --#{$prefix}card-img-movie__card__overlay-padding: #{$card-img-movie__card__overlay-padding};
   --#{$prefix}card-group-margin: #{$card-group-margin};
   // scss-docs-end card-css-vars
 
@@ -149,13 +149,13 @@
 }
 
 // Card image
-.card-img-overlay {
+.card-img-movie__card__overlay {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  padding: var(--#{$prefix}card-img-overlay-padding);
+  padding: var(--#{$prefix}card-img-movie__card__overlay-padding);
   @include border-radius(var(--#{$prefix}card-inner-border-radius));
 }
 

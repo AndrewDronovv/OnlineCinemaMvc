@@ -5,12 +5,12 @@
         @foreach (var card in Model)
         {
             <div class="col">
-                <div class="card custom-card-news mb-3">
+                <div class="card news__card__custom mb-3">
                     <a asp-controller="News" asp-action="GetNewsById" asp-route-id="@card.Id">
-                        <img src="@card.ImagePath" class="card-img-top custom-card-img-top" alt="Some picture">
+                        <img src="@card.ImagePath" class="card-img-top" alt="Some picture">
                     </a>
                     <div class="card-body">
-                        <a class="card-news-text" asp-controller="News" asp-action="GetNewsById" asp-route-id="@card.Id">
+                        <a asp-controller="News" asp-action="GetNewsById" asp-route-id="@card.Id">
                             <h5 class="card-title">@card.Name</h5>
                         </a>
                         <p class="card-text"><small class="text-white-50">@card.Date.ToString("f")</small></p>

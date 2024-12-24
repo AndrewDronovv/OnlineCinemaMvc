@@ -6,12 +6,12 @@
         @foreach (var news in Model)
         {
             <div class="col-12 col-md-6 col-lg-4 mb-4">
-                <div class="card card-news h-100">
+                <div class="card h-100">
                     <a asp-controller="News" asp-action="GetNewsById" asp-route-id="@news.Id">
-                        <img src="@news.ImagePath" class="card-img-top card-img-top-news" alt="Some picture">
+                        <img src="@news.ImagePath" class="card-img-top" alt="Some picture">
                     </a>
-                    <div class="card-body card-body-news background-card-color d-flex flex-column">
-                        <a class="card-news-text mb-auto" asp-controller="News" asp-action="GetNewsById" asp-route-id="@news.Id">
+                    <div class="card-body background-card-color d-flex flex-column">
+                        <a class="mb-auto" asp-controller="News" asp-action="GetNewsById" asp-route-id="@news.Id">
                             <h5 class="card-title text-white">@news.Name</h5>
                         </a>
                         <div class="text-white-50">

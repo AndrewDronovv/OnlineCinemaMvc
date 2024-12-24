@@ -1,4 +1,5 @@
-﻿document.getElementById("EnterPassword").addEventListener("change", validatePasswords);
+﻿new Snow();
+document.getElementById("EnterPassword").addEventListener("change", validatePasswords);
 document.getElementById("RepeatPassword").addEventListener("change", validatePasswords);
 
 function validatePasswords() {

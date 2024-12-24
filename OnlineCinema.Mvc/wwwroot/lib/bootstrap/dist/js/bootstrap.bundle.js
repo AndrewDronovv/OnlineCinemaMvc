@@ -2468,7 +2468,7 @@
         overflowX = _getComputedStyle.overflowX,
         overflowY = _getComputedStyle.overflowY;
 
-    return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX);
+    return /auto|scroll|movie__card__overlay|hidden/.test(overflow + overflowY + overflowX);
   }
 
   function getScrollParent(node) {

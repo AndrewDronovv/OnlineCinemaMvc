@@ -23,6 +23,12 @@ body {
     background-color: hsl(0, 0%, 18%);
 }
 
+:root {
+    --main-color: #bd257f;
+}
+
+
+
 /* Header */
 
 /* Логотип в шапке и в футер */
@@ -31,7 +37,14 @@ body {
     height: auto;
 }
 
-/* Меню в шапке */
+/* Убирается выделение логотипа */
+.logo__custom__effect:hover,
+.logo__custom__effect:focus,
+.logo__custom__effect:active {
+    background: none !important;
+}
+
+/* Меню в шапке АКЦИИ ДЕТЯМ АРТ*/
 .header__navbar__custom a {
     margin: 10px 5px 0 0;
     padding: 0;
@@ -39,6 +52,11 @@ body {
 }
 
     .header__navbar__custom a:hover {
+        background-color: #2a2a2a;
+        color: var(--main-color);
+    }
+
+    .header__navbar__custom a:focus {
         background-color: #2a2a2a;
         color: #bd257f;
     }
@@ -83,14 +101,13 @@ body {
     box-shadow: none !important;
 }
 
-
 /* Поля ввода данных для логина */
-.personal__contact__input .form-control:focus {
+.personal__login__input .form-control:focus {
     border-color: #bd257f !important;
     box-shadow: 0 0 3px rgba(189, 37, 127, 0.5) !important;
 }
 
-.personal__contact__input .input-group:focus-within .input-group-text i {
+.personal__login__input .input-group:focus-within .input-group-text i {
     color: #bd257f !important;
 }
 
@@ -130,9 +147,99 @@ body {
         text-decoration: none;
     }
 
+/* Поля ввода данных для регистрации  */
+.personal__registration__input .form-control:focus {
+    border-color: #bd257f !important;
+    box-shadow: 0 0 3px rgba(189, 37, 127, 0.5) !important;
+}
+
+.personal__registration__input .form-select:focus {
+    border-color: #bd257f !important;
+    box-shadow: 0 0 3px rgba(189, 37, 127, 0.5) !important;
+}
+
+.personal__registration__input .input-group:focus-within .input-group-text i {
+    color: #bd257f !important;
+}
+
+/* Кнопка  Зарегистрироваться*/
+.registration__btn_custom {
+    background-color: #bd257f96 !important;
+    color: white !important;
+    border-color: transparent;
+}
+
+    .registration__btn_custom:hover {
+        background-color: #bd257fa4 !important;
+        color: white !important;
+        border-color: transparent;
+    }
+
+    .registration__btn_custom:focus {
+        box-shadow: none !important;
+    }
+
+/* Кнопка Запомнить меня */
+.remember__me__btn .form-check-input:focus,
+.remember__me__btn .form-check-input:active {
+    box-shadow: none !important;
+}
+
+.remember__me__btn .form-check-input:checked {
+    background-color: #bd257f !important;
+    border-color: #bd257f !important;
+}
+
+.remember__me__btn .form-check-input:not(:checked) {
+    border-color: #bd257f !important;
+}
 
 
 
+/* Main */
+
+/* Слайдер рекламы фильмов ближе к header */
+.carousel__slider__custom img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Карточки фильмов на стартовой странице */
+.movie__card_custom {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 0px;
+    display: block;
+}
+
+    .movie__card_custom:hover .movie__card__overlay {
+        height: 30%;
+    }
+
+.movie__img__custom {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.movie__card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background-color: #c60085d4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+    transition: height 0.2s ease-out;
+}
 
 /* Расположение карточек акций поочередно слева и справа */
 .reverse {
@@ -150,7 +257,7 @@ body {
 }
 
 /* Кнопка УЗНАТЬ БОЛЬШЕ в news на главной странице */
-.promotionBtnStyle {
+.learn__more__btn {
     background-color: #bd257f;
     border-radius: 17px;
     border: 0px;
@@ -158,144 +265,40 @@ body {
     transition: background-color 0.2s ease;
 }
 
-    .promotionBtnStyle:hover {
+    .learn__more__btn:hover {
         background-color: #f632a6;
     }
 
-    .promotionBtnStyle:active,
-    .promotionBtnStyle:focus {
+    .learn__more__btn:active,
+    .learn__more__btn:focus {
         background-color: #f632a6 !important;
         border: 0 !important;
         box-shadow: none !important;
     }
 
-
-
-/* Цвет текста ссылок */
-.text-white a {
-    color: white;
-}
-
-.promotion-card h {
-    color: white;
-}
-
-/* Карточка фильма, выбор сеанса и оплата */
-.movie-card-details {
-    width: 250px;
-    height: 250px;
-    clip-path: circle(40%);
-}
-
-
-/* Карточка новостей */
-.card-news {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: transparent;
-}
-
-.card-body-news {
-    flex-grow: 1;
-}
-
-.card-img-top-news {
-    height: 200px;
-    object-fit: cover;
-}
-
-
 /* Карточки новостей на главной странице ближе к footer */
-.custom-card-news {
+.news__card__custom {
     background-color: transparent;
     border: none;
 }
 
-.custom-card-img-top {
-    border-radius: 15px;
-}
+    .news__card__custom img {
+        border-radius: 15px;
+    }
 
-.card-news-text {
-    text-decoration: none;
-    color: white;
-}
-
-    .card-news-text:hover {
+    .news__card__custom a {
         text-decoration: none;
-        color: #f632a6;
+        color: white;
     }
 
+        .news__card__custom a:hover {
+            text-decoration: none;
+            color: #f632a6;
+        }
 
-/* Текст предложений для клиентов */
-.custom-offer-text a:hover {
-    color: #f632a6 !important;
-    text-decoration: none !important;
-}
-
-
-/* Слайдер рекламы фильмов ближе к header */
-.carousel-inner {
-    height: 500px;
-}
-
-.custom-carousel .carousel-item {
-    height: 500px;
-}
-
-.custom-carousel img {
-    height: 400px;
-}
-
-.custom-carousel img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-
-
-/* Карточки фильмов на стартовой странице */
-.custom-card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 18px;
-    border: 0px;
-}
-
-    .custom-card:hover .overlay {
-        height: 30%;
-    }
-
-.card-img-custom {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-}
-
-.card-movie-poster {
-    display: block;
-}
-
-.overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 20%;
-    background-color: #c60085d4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1rem;
-    transition: height 0.2s ease-out;
-}
-
-
+/* Элементы сайта, при покупке билета */
 /* Кнопка отображения дней показов фильма при покупке билета */
-.btn-movie-session {
+.movie__session__btn {
     padding: 3px 18px;
     margin: 10px 8px 10px 0;
     color: white;
@@ -303,25 +306,24 @@ body {
     border: 1px solid grey;
 }
 
-    .btn-movie-session:hover {
+    .movie__session__btn:hover {
         border: 1px solid #bd257f;
         color: #bd257f;
     }
 
-    .btn-movie-session.active {
+    .movie__session__btn.active {
         border-color: #c60085d4;
         color: #c60085d4;
     }
 
-    .btn-movie-session:active,
-    .btn-movie-session:focus {
+    .movie__session__btn:active,
+    .movie__session__btn:focus {
         border: 1px solid #c60085d4 !important;
         box-shadow: none !important;
     }
 
-
 /* Кнопка Все холлы*/
-.btn-hall-all {
+.all__hall__btn {
     padding: 0px 8px;
     margin: 5px;
     background-color: transparent !important;
@@ -330,12 +332,12 @@ body {
     border: 1px solid grey !important;
 }
 
-    .btn-hall-all:hover {
+    .all__hall__btn:hover {
         border: 1px solid #bd257f !important;
         color: #bd257f !important;
     }
 
-    .btn-hall-all.active {
+    .all__hall__btn.active {
         padding: 0px 8px;
         margin: 5px;
         background-color: transparent !important;
@@ -346,15 +348,15 @@ body {
         color: #bd257f !important;
     }
 
-    .btn-hall-all:active,
-    .btn-hall-all:focus {
+    .all__hall__btn:active,
+    .all__hall__btn:focus {
         border-color: #c60085d4;
         border: 1px solid #bd257f !important;
         box-shadow: none !important;
     }
 
 /*Остальные кнопки остальных видов холла*/
-.btn-hall-other {
+.hall__other__btn {
     padding: 0px 8px;
     margin: 5px;
     background-color: transparent !important;
@@ -363,12 +365,12 @@ body {
     border-radius: 15px;
 }
 
-    .btn-hall-other:hover {
+    .hall__other__btn:hover {
         border: 1px solid #bd257f !important;
         color: #bd257f !important;
     }
 
-    .btn-hall-other.active {
+    .hall__other__btn.active {
         padding: 0px 8px;
         margin: 5px;
         background-color: transparent !important;
@@ -379,15 +381,17 @@ body {
         color: #bd257f !important;
     }
 
-    .btn-hall-other:active,
-    .btn-hall-other:focus {
+    .hall__other__btn:active,
+    .hall__other__btn:focus {
         border-color: #c60085d4;
         border: 1px solid #bd257f !important;
         box-shadow: none !important;
     }
 
 
+
 /* Footer */
+
 /* Соцсети footer */
 .btn-circle {
     width: 50px;
@@ -397,4 +401,15 @@ body {
     text-align: center;
     font-size: 16px;
     line-height: 1.5;
+}
+
+/* Цвет текста ссылок */
+.text-white a {
+    color: white;
+}
+
+/* Текст предложений для клиентов */
+.offer__text__custom a:hover {
+    color: #f632a6 !important;
+    text-decoration: none !important;
 }
