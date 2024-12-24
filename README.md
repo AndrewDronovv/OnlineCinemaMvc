@@ -17,5 +17,5 @@
 **ASP.NET Core MVC**,
 **JavaScript**,
 **HTML5 & CSS3**,
-**SQL Server**,
-**Bootstrap**
+**Bootstrap**,
+**SQL Server**
