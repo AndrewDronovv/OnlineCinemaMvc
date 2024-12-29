@@ -1,5 +1,5 @@
 // Shared between modals and offcanvases
-@mixin movie__card__overlay-backdrop($zindex, $backdrop-bg, $backdrop-opacity) {
+@mixin overlay-backdrop($zindex, $backdrop-bg, $backdrop-opacity) {
   position: fixed;
   top: 0;
   left: 0;

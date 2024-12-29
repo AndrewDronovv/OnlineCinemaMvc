@@ -1,10 +1,12 @@
 ﻿new Snow();
-document.getElementById("EnterPassword").addEventListener("change", validatePasswords);
-document.getElementById("RepeatPassword").addEventListener("change", validatePasswords);
+
+$(document).ready(function () {
+    $('.mask-phone').mask('+7 (999) 999-99-99');
+});
 
 function validatePasswords() {
-    var enterPassword = document.getElementById('EnterPassword');
-    var repeatPassword = document.getElementById('RepeatPassword');
+    let enterPassword = document.getElementById('EnterPassword');
+    let repeatPassword = document.getElementById('RepeatPassword');
 
     const enterPasswordValidation = document.getElementById("EnterPasswordValidation");
 
@@ -17,6 +19,10 @@ function validatePasswords() {
         enterPasswordValidation.innerHTML = "";
     }
 }
+
+document.getElementById("EnterPassword").addEventListener("change", validatePasswords);
+document.getElementById("RepeatPassword").addEventListener("change", validatePasswords);
+
 
 document.getElementById("LoginButton").addEventListener("click", function () {
     const email = document.getElementById("Email").value;

@@ -117,7 +117,7 @@
 }
 
 .offcanvas-backdrop {
-  @include movie__card__overlay-backdrop($zindex-offcanvas-backdrop, $offcanvas-backdrop-bg, $offcanvas-backdrop-opacity);
+  @include overlay-backdrop($zindex-offcanvas-backdrop, $offcanvas-backdrop-bg, $offcanvas-backdrop-opacity);
 }
 
 .offcanvas-header {

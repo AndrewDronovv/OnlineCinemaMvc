@@ -4,7 +4,7 @@ using OnlineCinema.Domain.Entities;
 
 namespace OnlineCinema.Domain;
 
-public class AppDbContext : IdentityDbContext<User>
+public class AppDbContext : IdentityDbContext<User, Role, int>
 {
     public DbSet<Customer> Customers { get; set; }
     public DbSet<Genre> Genres { get; set; }

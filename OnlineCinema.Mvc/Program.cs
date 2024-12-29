@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using OnlineCinema.Domain;
 using OnlineCinema.Domain.Entities;
+using OnlineCinema.Mvc.Services.CurrentUser;
 using System.Globalization;
 
 CultureInfo.DefaultThreadCurrentCulture = CultureInfo.GetCultureInfo("ru-RU");
@@ -16,7 +17,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(conn
 
 builder.Services.AddAutoMapper(typeof(Program));
 
-builder.Services.AddIdentity<User, IdentityRole>(opt =>
+builder.Services.AddIdentity<User, Role>(opt =>
 {
     opt.Password.RequireDigit = false;
     opt.Password.RequireUppercase = false;
@@ -29,7 +30,8 @@ builder.Services.AddIdentity<User, IdentityRole>(opt =>
 })
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
-
+builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 

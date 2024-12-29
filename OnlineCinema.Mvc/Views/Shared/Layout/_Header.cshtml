@@ -1,4 +1,11 @@
-﻿<header>
+﻿@using OnlineCinema.Mvc.Services.CurrentUser
+@inject ICurrentUserService currentUserService
+
+@{
+    string account = currentUserService.IsAuthenticated ? currentUserService.Name : "Личный кабинет";
+}
+
+<header>
     <nav class="navbar navbar-expand-lg header__navbar__custom">
         <div class="container">
             <a class="navbar-brand logo__custom__effect" asp-controller="Home" asp-action="Index">
@@ -22,7 +29,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item header__personal__account">
                         <a class="nav-link text-white" data-bs-toggle="modal" data-bs-target="#PersonalAccountModal" href="#">
-                            <i class="fa-regular fa-user me-1"></i>Личный кабинет
+                            <i class="fa-regular fa-user me-1"></i>@account
                         </a>
                     </li>
                 </ul>
