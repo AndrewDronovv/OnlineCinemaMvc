@@ -24,6 +24,6 @@ namespace OnlineCinema.Mvc.Models.ViewModels.Home
         [DataType(DataType.Password)]
         [Display(Name = "Повторный пароль")]
         public string ConfirmPassword { get; set; }
-        public bool IsMan { get; set; }
+        public bool? IsMan { get; set; }
     }
 }

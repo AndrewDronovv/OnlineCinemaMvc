@@ -27,6 +27,11 @@ body {
     --main-color: #bd257f;
 }
 
+.header__container {
+    display:flex;
+    justify-content:space-between;
+}
+
 
 
 /* Header */
@@ -62,10 +67,12 @@ body {
     }
 
 /* —сылка на личный кабинет */
-.header__personal__account .nav-link:hover {
-    color: #bd257f !important;
-    box-shadow: none !important;
-}
+
+
+    .header__personal__account .nav-link:hover {
+        color: #bd257f !important;
+        box-shadow: none !important;
+    }
 
 /* ќкно регистрации пользовател€ */
 /*  нопки ¬ход и –егистраци€ */
@@ -280,6 +287,7 @@ body {
 .news__card__custom {
     background-color: transparent;
     border: none;
+    color: #fff !important;
 }
 
     .news__card__custom img {
@@ -288,13 +296,15 @@ body {
 
     .news__card__custom a {
         text-decoration: none;
-        color: white;
+        color: #fff;
+        transition: color 0.2s linear, font-size 0.2s linear;
     }
 
         .news__card__custom a:hover {
             text-decoration: none;
             color: #f632a6;
         }
+
 
 /* Ёлементы сайта, при покупке билета */
 /*  нопка отображени€ дней показов фильма при покупке билета */

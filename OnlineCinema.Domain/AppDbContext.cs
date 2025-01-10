@@ -20,4 +20,12 @@ public class AppDbContext : IdentityDbContext<User, Role, int>
     public AppDbContext(DbContextOptions options) : base(options)
     {
     }
+
+    protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+    {
+        base.ConfigureConventions(configurationBuilder);
+
+        configurationBuilder.Properties<DateTime>().HaveColumnType("timestamp without time zone");
+        configurationBuilder.Properties<DateTime?>().HaveColumnType("timestamp with time zone");
+    }
 }

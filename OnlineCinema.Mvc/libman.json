@@ -20,12 +20,8 @@
       "destination": "wwwroot/lib/dayjs/"
     },
     {
-      "library": "jquery@3.7.1",
-      "destination": "wwwroot/lib/jquery/"
-    },
-    {
-      "library": "jquery.maskedinput@1.4.1",
-      "destination": "wwwroot/lib/jquery.maskedinput/"
+      "library": "imask@7.6.1",
+      "destination": "wwwroot/lib/imask/"
     }
   ]
 }

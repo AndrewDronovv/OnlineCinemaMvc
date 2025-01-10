@@ -27,7 +27,7 @@ public class AccountController : BaseMvcController
             if (result.Succeeded)
             {
                 var user = await _userManager.FindByEmailAsync(input.Email);
-                return Ok(new {Name = user.Name});
+                return Ok(new { Name = user.Name });
             }
         }
 
@@ -58,21 +58,32 @@ public class AccountController : BaseMvcController
     public async Task<IActionResult> Register([FromBody] RegisterViewModel input)
     {
         var user = Mapper.Map<User>(input);
-        user.UserName = input.Email;
-        var result = await _userManager.CreateAsync(user, input.Password);
 
-        if (result.Succeeded)
+        user.UserName = input.Email;
+        try
         {
-            return Ok();
+            var result = await _userManager.CreateAsync(user, input.Password);
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
+
+            return BadRequest(result.Errors);
+
+        }
+        catch (Exception ex)
+        {
+
+            throw;
         }
 
-        return BadRequest(result.Errors);
+
     }
 
     public async Task<IActionResult> GetUser()
     {
         //var userViewModel = await _userManager.
-        
+
         return View("PersonalAccount");
     }
 }

@@ -14,7 +14,7 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#NavbarSupportedContent" aria-controls="NavbarSupportedContent" aria-expanded="false">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-flex justify-content-between" id="NavbarSupportedContent">
+            <div class="collapse navbar-collapse" id="NavbarSupportedContent">
                 <ul class="nav nav-underline">
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Promotions" asp-action="Promotions">АКЦИИ</a>
@@ -27,9 +27,9 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item header__personal__account">
+                    <li class="nav-item">
                         <a class="nav-link text-white" data-bs-toggle="modal" data-bs-target="#PersonalAccountModal" href="#">
-                            <i class="fa-regular fa-user me-1"></i>@account
+                            <i class="fa-regular fa-user me-1"></i><span id="AccountUserName">@account</span>
                         </a>
                     </li>
                 </ul>

@@ -1,13 +1,13 @@
-﻿new Snow();
-
-$(document).ready(function () {
-    $('.mask-phone').mask('+7 (999) 999-99-99');
-});
+﻿IMask(
+    document.querySelector('.mask-phone'),
+    {
+        mask: '+{7}(000)000-00-00'
+    }
+)
 
 function validatePasswords() {
-    let enterPassword = document.getElementById('EnterPassword');
-    let repeatPassword = document.getElementById('RepeatPassword');
-
+    const enterPassword = document.getElementById('EnterPassword');
+    const repeatPassword = document.getElementById('RepeatPassword');
     const enterPasswordValidation = document.getElementById("EnterPasswordValidation");
 
     if (enterPassword.value !== repeatPassword.value) {
@@ -42,7 +42,8 @@ document.getElementById("LoginButton").addEventListener("click", function () {
 
             const name = response.data.name;
 
-            document.getElementById("LoginSuccesNameSpot").innerText = `${name}`;
+            document.getElementById("LoginSuccesNameSpot").innerText = name;
+            document.getElementById("AccountUserName").innerText = name;
         })
         .catch(function (error) {
             console.log(error);
@@ -70,22 +71,25 @@ phoneButton.addEventListener("click", showPhoneForm);
 emailButton.addEventListener("click", showEmailForm);
 
 document.getElementById("RegistrationButton").addEventListener("click", function () {
-    const phone = document.getElementById("PhoneRegistration").value;
     const name = document.getElementById("NameRegistration").value;
-    const password = document.getElementById("EnterPassword").value;
+    const lastName = document.getElementById("SurnameRegistration").value;
+    const phoneNumber = document.getElementById("PhoneRegistration").value;
     const email = document.getElementById("EmailRegistration").value;
-    const lastname = document.getElementById("SurnameRegistration").value;
-    const passwordRepetition = document.getElementById("RepeatPassword").value;
-    const gender = document.getElementById("GenderRegistration").value;
+    const password = document.getElementById("EnterPassword").value;
+    const confirmPassword = document.getElementById("RepeatPassword").value;
+
+    const genderValue = document.getElementById('GenderRegistration').value;
+    const isMan = genderValue === "male" ? true : false;
+
 
     axios.post('/Account/Register', {
-        PhoneNumber: phone,
         Name: name,
-        LastName: lastname,
+        LastName: lastName,
+        PhoneNumber: phoneNumber,
         Email: email,
         Password: password,
-
-        IsMan: gender,
+        ConfirmPassword: confirmPassword,
+        IsMan: isMan,
 
     })
         .then(function (response) {

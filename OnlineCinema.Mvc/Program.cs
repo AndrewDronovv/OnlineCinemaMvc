@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 string connectionString = builder.Configuration.GetConnectionString("Default");
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 
 builder.Services.AddAutoMapper(typeof(Program));
 
@@ -23,13 +23,14 @@ builder.Services.AddIdentity<User, Role>(opt =>
     opt.Password.RequireUppercase = false;
     opt.SignIn.RequireConfirmedEmail = false;
     opt.User.RequireUniqueEmail = true;
+    opt.User.AllowedUserNameCharacters = string.Empty;
     opt.SignIn.RequireConfirmedAccount = false;
     opt.Password.RequiredLength = 5;
     opt.Lockout.MaxFailedAccessAttempts = 10;
-    opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 })
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
+
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddHttpContextAccessor();
 

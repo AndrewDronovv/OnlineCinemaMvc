@@ -2,7 +2,6 @@
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Versioning;
 using OnlineCinema.Domain;
 using OnlineCinema.Domain.Entities;
 using OnlineCinema.Mvc.Dto;
