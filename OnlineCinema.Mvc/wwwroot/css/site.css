@@ -28,8 +28,8 @@ body {
 }
 
 .header__container {
-    display:flex;
-    justify-content:space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 
@@ -68,11 +68,10 @@ body {
 
 /* Ссылка на личный кабинет */
 
-
-    .header__personal__account .nav-link:hover {
-        color: #bd257f !important;
-        box-shadow: none !important;
-    }
+.header__personal__account .nav-link:hover {
+    color: #bd257f !important;
+    box-shadow: none !important;
+}
 
 /* Окно регистрации пользователя */
 /* Кнопки Вход и Регистрация */
@@ -143,6 +142,33 @@ body {
 
     .enter__btn__custom:focus {
         box-shadow: none !important;
+    }
+
+/* Кнопки в личном кабинете */
+.personal__account__button {
+    padding: 3px 18px;
+    margin: 15px 8px 15px 0;
+    color: white;
+    background-color: transparent;
+    border: 1px solid grey;
+}
+
+    .personal__account__button:hover {
+        border: 1px solid white;
+        background-color: transparent;
+        color: #ffffffe4;
+    }
+
+    .personal__account__button.active {
+        border-color: #c60085d4;
+        color: #c60085d4;
+    }
+
+    .personal__account__button:active,
+    .personal__account__button:focus {
+        border: 1px solid white !important;
+        box-shadow: none !important;
+        background-color: transparent !important;
     }
 
 /* Текст Пользовательского соглашения */
@@ -310,7 +336,7 @@ body {
 /* Кнопка отображения дней показов фильма при покупке билета */
 .movie__session__btn {
     padding: 3px 18px;
-    margin: 10px 8px 10px 0;
+    margin: 15px 8px 15px 0;
     color: white;
     background-color: transparent;
     border: 1px solid grey;
@@ -335,7 +361,9 @@ body {
 /* Кнопка Все холлы*/
 .all__hall__btn {
     padding: 0px 8px;
-    margin: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 9px;
     background-color: transparent !important;
     color: white !important;
     border-radius: 15px;
@@ -349,7 +377,6 @@ body {
 
     .all__hall__btn.active {
         padding: 0px 8px;
-        margin: 5px;
         background-color: transparent !important;
         border: 1px solid grey !important;
         color: white !important;
@@ -365,10 +392,37 @@ body {
         box-shadow: none !important;
     }
 
+.btn-session-time {
+    padding: 3px 18px;
+    margin: 15px 8px 15px 0;
+    color: white;
+    background-color: transparent !important;
+    border: 1px solid grey;
+}
+
+    .btn-session-time:hover {
+        border: 1px solid #bd257f;
+        color: #bd257f;
+    }
+
+    .btn-session-time.active {
+        border-color: #c60085d4;
+        color: #c60085d4;
+    }
+
+    .btn-session-time:active,
+    .btn-session-time:focus {
+        border: 1px solid #c60085d4 !important;
+        box-shadow: none !important;
+    }
+
+
 /*Остальные кнопки остальных видов холла*/
 .hall__other__btn {
     padding: 0px 8px;
-    margin: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 9px;
     background-color: transparent !important;
     border: 1px solid grey !important;
     color: white !important;
@@ -398,10 +452,33 @@ body {
         box-shadow: none !important;
     }
 
+/*Типы залов и мест*/
+.hall__seat__types {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+    background-color: hsl(0, 0%, 18%);
+}
 
+    .hall__seat__types th {
+        text-align: center;
+        color: white;
+        padding: 12px;
+    }
+
+    .hall__seat__types td {
+        text-align: left;
+        color: white;
+        padding: 12px;
+    }
+
+    .hall__seat__types .td__width {
+        width: 175px;
+    }
 
 /* Footer */
-
 /* Соцсети footer */
 .btn-circle {
     width: 50px;

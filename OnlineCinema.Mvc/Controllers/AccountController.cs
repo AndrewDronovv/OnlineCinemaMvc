@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnlineCinema.Domain;
 using OnlineCinema.Domain.Entities;
+using OnlineCinema.Mvc.Models.ViewModels.Account;
 using OnlineCinema.Mvc.Models.ViewModels.Home;
 
 namespace OnlineCinema.Mvc.Controllers;
@@ -79,11 +80,10 @@ public class AccountController : BaseMvcController
 
 
     }
-
-    public async Task<IActionResult> GetUser()
+    [Route("lk")]
+    public async Task<IActionResult> PersonalAccount()
     {
-        //var userViewModel = await _userManager.
-
+                
         return View("PersonalAccount");
     }
 }

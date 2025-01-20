@@ -1,4 +1,4 @@
-﻿namespace OnlineCinema.Mvc.Dto;
+﻿namespace OnlineCinema.Mvc.Models.Dto;
 
 public class GetAllSessionsDto
 {

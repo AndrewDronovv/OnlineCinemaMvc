@@ -2,19 +2,19 @@
 @model IEnumerable<HallViewModel>
 
 <h1 class="text-white">Типы залов и мест</h1>
-<table class="table table-borderless bg-transparent">
+<table class="hall__seat__types">
     <thead>
         <tr>
-            <th scope="col">Название зала</th>
-            <th scope="col">Описание</th>
-            <th scope="col">Фото</th>
+            <th>Название зала</th>
+            <th>Описание</th>
+            <th>Фото</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var hall in Model)
         {
             <tr>
-                <td>@hall.Name</td>
+                <td class="td__width">@hall.Name</td>
                 <td>@hall.Description</td>
                 <td><img src="@hall.PicturePath" /></td>
             </tr>

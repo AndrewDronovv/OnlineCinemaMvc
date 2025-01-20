@@ -1,4 +1,9 @@
-﻿IMask(
+﻿const emailButton = document.getElementById("EmailBtn");
+const phoneButton = document.getElementById("PhoneBtn");
+const emailWrapper = document.getElementById("EmailWrapper");
+const phoneWrapper = document.getElementById("PhoneWrapper");
+
+IMask(
     document.querySelector('.mask-phone'),
     {
         mask: '+{7}(000)000-00-00'
@@ -50,10 +55,7 @@ document.getElementById("LoginButton").addEventListener("click", function () {
         });
 });
 
-const emailButton = document.getElementById("EmailBtn");
-const phoneButton = document.getElementById("PhoneBtn");
-const emailWrapper = document.getElementById("EmailWrapper");
-const phoneWrapper = document.getElementById("PhoneWrapper");
+
 
 function showPhoneForm() {
     phoneWrapper.classList.remove("d-none");

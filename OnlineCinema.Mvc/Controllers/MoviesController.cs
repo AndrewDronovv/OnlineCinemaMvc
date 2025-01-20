@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnlineCinema.Domain;
 using OnlineCinema.Domain.Entities;
-using OnlineCinema.Mvc.Dto;
+using OnlineCinema.Mvc.Models.Dto;
 using OnlineCinema.Mvc.Models.ViewModels.Hall;
 using OnlineCinema.Mvc.Models.ViewModels.Movies;
 using System.Globalization;
