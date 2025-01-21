@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using OnlineCinema.Domain.Entities;
 using OnlineCinema.Mvc.Models.Dto.Genres;
-using OnlineCinema.Mvc.Models.ViewModels.Account;
 using OnlineCinema.Mvc.Models.ViewModels.Hall;
 using OnlineCinema.Mvc.Models.ViewModels.Home;
 using OnlineCinema.Mvc.Models.ViewModels.Movies;
@@ -26,6 +25,5 @@ public class EntityToDtoProfile : Profile
         CreateMap<Promotion, PromotionViewModel>();
         CreateMap<Hall, HallViewModel>();
         CreateMap<Genre, GenreDto>();
-        CreateMap<User, AccountViewModel>();    
     }
 }

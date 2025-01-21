@@ -23,6 +23,10 @@ body {
     background-color: hsl(0, 0%, 18%);
 }
 
+h1, h2, h3 {
+    margin: 0;
+}
+
 :root {
     --main-color: #bd257f;
 }
@@ -32,6 +36,17 @@ body {
     justify-content: space-between;
 }
 
+/* јдминка */
+
+
+/* ÷вет текста label у таблицы жанры */
+.dt-search, .dt-length, .dt-info {
+    color: white;
+}
+
+.genre__title {
+    margin-left: 15px;
+}
 
 
 /* Header */

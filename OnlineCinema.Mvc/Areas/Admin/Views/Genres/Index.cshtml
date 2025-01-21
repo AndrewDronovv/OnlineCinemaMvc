@@ -1,6 +1,6 @@
 ﻿<section>
-    <h1>Жанры</h1>
-    <table id="GenresTable">
+    <h1 class="text-white genre__title">Жанры</h1>
+    <table id="GenresTable" class="table">
         <thead>
             <tr>
                 <th>name</th>
@@ -8,6 +8,29 @@
         </thead>
     </table>
 </section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="GenreEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Редактирование жанра</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="GenreName" class="form-label">Название</label>
+                    <input type="text" class="form-control" id="GenreName" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="SaveGenreBtn">Сохранить</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 @section Scripts {

@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnlineCinema.Domain;
 using OnlineCinema.Domain.Entities;
-using OnlineCinema.Mvc.Models.ViewModels.Account;
 using OnlineCinema.Mvc.Models.ViewModels.Home;
 
 namespace OnlineCinema.Mvc.Controllers;
@@ -24,10 +23,11 @@ public class AccountController : BaseMvcController
     {
         if (!string.IsNullOrWhiteSpace(input.Email))
         {
-            var result = await _signInManager.PasswordSignInAsync(input.Email, input.Password, false, false);
+            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Email == input.Email);
+            var result = await _signInManager.CheckPasswordSignInAsync(user, input.Password, false);
             if (result.Succeeded)
             {
-                var user = await _userManager.FindByEmailAsync(input.Email);
+                await _signInManager.SignInAsync(user, true);
                 return Ok(new { Name = user.Name });
             }
         }
@@ -37,10 +37,10 @@ public class AccountController : BaseMvcController
             var user = await _userManager.Users.FirstOrDefaultAsync(u => u.PhoneNumber == input.Phone);
             if (user != null)
             {
-                var result = await _signInManager.CheckPasswordSignInAsync(user, input.Password, false);
+                var result = await _signInManager.PasswordSignInAsync(input.Email, input.Password, false, false);
                 if (result.Succeeded)
                 {
-                    return Ok();
+                    return Ok(new { Name = user.Name });
                 }
             }
         }
@@ -83,7 +83,7 @@ public class AccountController : BaseMvcController
     [Route("lk")]
     public async Task<IActionResult> PersonalAccount()
     {
-                
+
         return View("PersonalAccount");
     }
 }

@@ -34,6 +34,11 @@
     {
       "library": "jquery@3.7.1",
       "destination": "wwwroot/lib/jquery/"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "sweetalert2@11.4.0",
+      "destination": "wwwroot/lib/sweetalert2/"
     }
   ]
 }
