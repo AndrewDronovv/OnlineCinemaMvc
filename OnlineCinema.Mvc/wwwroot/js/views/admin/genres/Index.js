@@ -1,27 +1,24 @@
-﻿const getGenres = filters => {
-    return axios.post("/admin/genres/getAll", filters)
-        .then(function (response) {
-            return response.data;
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-};
+﻿const getGenres = filters => axios.post("/admin/genres/getAll", filters)
+    .then(response => response.data)
+    .catch(console.error);
 
+const getGenreById = genreId => axios.get(`/admin/genres/get?id=${genreId}`)
+    .then(response => response.data)
+    .catch(console.error);
 
-const deleteGenre = (genreId) => {
-    return axios.delete('/admin/genres/delete?id=' + genreId,
-    )
-        .then(function (response) {
-            table.ajax.reload();
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-}
+const deleteGenre = genreId => axios.delete("/admin/genres/delete?id=" + genreId)
+    .then(() => table.ajax.reload())
+    .catch(console.error);
 
+const updateGenre = updatedData => axios.put("/admin/genres/update", updatedData)
+    .then(response => response.data)
+    .catch(console.error);
 
-const onDelete = (btn) => {
+const createGenre = data => axios.post("/admin/genres/create", data)
+    .then(response => response.data)
+    .catch(console.error);
+
+const onDelete = btn => {
     const id = +btn.dataset.id;
     const name = btn.dataset.name;
     Swal.fire({
@@ -34,68 +31,101 @@ const onDelete = (btn) => {
         cancelButtonText: "Нет",
         confirmButtonText: "Удалить"
     }).then((result) => {
-        if (!result.isConfirmed) {
-            return;
+        if (result.isConfirmed) {
+            deleteGenre(id);
         }
-
-        deleteGenre(id);
     });
-}
+};
 
+document.getElementById("AddSaveGenreBtn").addEventListener("click", () => {
+    const genreNameInput = document.getElementById("AddGenreName");
+    const newGenreData = {
+        name: genreNameInput.value,
+    };
 
-const updateGenre = (updatedData) => {
-    return axios.put('/admin/genres/update', updatedData, {
-    })
-        .then(function (response) {
-            return response.data;
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
-}
+    createGenre(newGenreData)
+        .then(data => {
+            const addModal = bootstrap.Modal.getInstance(document.getElementById("GenreAddModal"));
+            genreNameInput.value = "";
+            addModal.hide();
+            table.ajax.reload();
+        });
+});
 
+//document.addEventListener("click", (event) => {
+//    const target = event.target;
+//    if (target.closest(".edit")) {
+//        event.preventDefault();
 
-document.addEventListener('click', (event) => {
+//        const genreId = +target.closest(".edit").dataset.id;
+//        const genreNameInput = document.getElementById("EditGenreName");
+
+//        const editModal = new bootstrap.Modal("#GenreEditModal");
+//        editModal.show();
+
+//        genreNameInput.value = target.closest(".edit").dataset.name;
+
+//        document.getElementById("EditSaveGenreBtn").addEventListener("click", saveHandler);
+
+//        function saveHandler() {
+//            const genreName = genreNameInput.value;
+
+//            const updatedData = {
+//                id: genreId,
+//                name: genreName
+//            }
+//            updateGenre(updatedData)
+//                .then(data => {
+//                    editModal.hide();
+//                    table.ajax.reload();
+//                })
+//        }
+//    } else if (target.closest(".delete")) {
+//        event.preventDefault();
+//        onDelete(target.closest(".delete"));
+//    };
+//});
+
+document.addEventListener("click", (event) => {
     const target = event.target;
-    if (target.closest('.edit')) {
+    if (target.closest(".edit")) {
         event.preventDefault();
 
-        const genreId = +target.closest('.edit').dataset.id;
-        const genreNameInput = document.getElementById("GenreName");
+        const genreId = +target.closest(".edit").dataset.id;
+        const genreNameInput = document.getElementById("EditGenreName");
 
         const editModal = new bootstrap.Modal("#GenreEditModal");
         editModal.show();
 
-        genreNameInput.value = target.closest(".edit").dataset.name;
+        getGenreById(genreId)
+            .then(genre => {
+                genreNameInput.value = genre.name;
 
-        document.getElementById("SaveGenreBtn").addEventListener("click", saveHandler);
+                document.getElementById("EditSaveGenreBtn").removeEventListener("click", saveHandler);
+                document.getElementById("EditSaveGenreBtn").addEventListener("click", saveHandler);
 
-        function saveHandler() {
-            const genreName = genreNameInput.value;
+                function saveHandler() {
+                    const genreName = genreNameInput.value;
 
-            const updatedData = {
-                id: genreId,
-                name: genreName
-            }
-            updateGenre(updatedData)
-                .then(data => {
-                    editModal.hide();
-                    table.ajax.reload();
-                })
-        }
+                    const updatedData = {
+                        id: genreId,
+                        name: genreName
+                    }
+                    updateGenre(updatedData)
+                        .then(data => {
+                            editModal.hide();
+                            table.ajax.reload();
+                        });
+                }
+            })
+            .catch(console.error);
+
     }
-});
-
-
-document.addEventListener('click', (event) => {
-    const target = event.target;
-    if (target.closest('.delete')) {
+    else if (target.closest(".delete")) {
         event.preventDefault();
-        onDelete(target.closest('.delete'));
-
-    }
-})
-
+        onDelete(target.closest(".delete"));
+    };
+});
 
 let table = new DataTable("#GenresTable", {
     serverSide: true,
@@ -140,5 +170,3 @@ let table = new DataTable("#GenresTable", {
         tooltipTriggerList.forEach(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl, { trigger: "hover" }));
     }
 });
-
-

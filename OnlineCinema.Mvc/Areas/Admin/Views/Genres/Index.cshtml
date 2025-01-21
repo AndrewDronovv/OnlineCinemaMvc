@@ -1,9 +1,14 @@
 ﻿<section>
-    <h1 class="text-white genre__title">Жанры</h1>
+    <div class="genres d-flex justify-content-between">
+        <h1 class="text-white admin__title">Жанры</h1>
+        <button class="btn btn-outline-light admin-add-btn" data-bs-toggle="modal" data-bs-target="#GenreAddModal" id="GenreAddBtn">
+            Добавить жанр
+        </button>
+    </div>
     <table id="GenresTable" class="table">
         <thead>
             <tr>
-                <th>name</th>
+                <th>Название</th>
             </tr>
         </thead>
     </table>
@@ -20,12 +25,34 @@
             </div>
             <div class="modal-body">
                 <div class="mb-3">
-                    <label for="GenreName" class="form-label">Название</label>
-                    <input type="text" class="form-control" id="GenreName" />
+                    <label for="EditGenreName" class="form-label">Название</label>
+                    <input type="text" class="form-control" id="EditGenreName" />
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="SaveGenreBtn">Сохранить</button>
+                <button type="button" class="btn btn-primary" id="EditSaveGenreBtn">Сохранить</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="GenreAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Добавление жанра</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="AddGenreName" class="form-label">Название</label>
+                    <input type="text" class="form-control" id="AddGenreName" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="AddSaveGenreBtn">Добавить</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
             </div>
         </div>

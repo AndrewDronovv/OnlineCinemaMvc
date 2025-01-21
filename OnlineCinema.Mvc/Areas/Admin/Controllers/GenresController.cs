@@ -22,6 +22,20 @@ public sealed class GenresController : BaseMvcController
         return View();
     }
 
+    [HttpGet]
+    public IActionResult Get(int id)
+    {
+        var genre = Context.Genres.FirstOrDefault(g => g.Id == id);
+        if (genre is null)
+        {
+            return NotFound();
+        }
+
+        var genreDto = Mapper.Map<GenreDto>(genre);
+
+        return Ok(genreDto);
+    }
+
     [HttpPost]
     public IActionResult GetAll([FromBody] PagedSearchRequestDto input)
     {
@@ -42,11 +56,21 @@ public sealed class GenresController : BaseMvcController
         return Ok(new PagedResultDto<GenreDto>(totalCount, dtos));
     }
 
+    [HttpPost]
+    public IActionResult Create([FromBody] GenreDto input)
+    {
+        var genre = Mapper.Map<Genre>(input);
+        Context.Genres.Add(genre);
+        Context.SaveChanges();
+
+        return Ok();
+    }
+
     [HttpDelete]
     public IActionResult Delete([FromQuery] int id)
     {
         Genre genre = Context.Genres.FirstOrDefault(g => g.Id == id);
-        if (genre == null)
+        if (genre is null)
         {
             return BadRequest();
         }
@@ -61,7 +85,7 @@ public sealed class GenresController : BaseMvcController
     public IActionResult Update([FromBody] GenreDto updateGenreDto)
     {
         var genre = Context.Genres.FirstOrDefault(g => g.Id == updateGenreDto.Id);
-        if (genre == null)
+        if (genre is null)
         {
             return BadRequest();
         }

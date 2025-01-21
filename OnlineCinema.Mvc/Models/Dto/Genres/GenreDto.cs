@@ -1,4 +1,6 @@
-﻿namespace OnlineCinema.Mvc.Models.Dto.Genres;
+﻿using OnlineCinema.Mvc.Models.Dto.Common;
+
+namespace OnlineCinema.Mvc.Models.Dto.Genres;
 
 public sealed class GenreDto : EntityDto
 {

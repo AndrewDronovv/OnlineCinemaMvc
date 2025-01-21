@@ -38,15 +38,26 @@ h1, h2, h3 {
 
 /* јдминка */
 
-
 /* ÷вет текста label у таблицы жанры */
 .dt-search, .dt-length, .dt-info {
     color: white;
 }
 
-.genre__title {
+.admin__title {
     margin-left: 15px;
 }
+
+.admin-add-btn {
+    margin-right: 15px;
+}
+
+    .admin-add-btn:active,
+    .admin-add-btn:focus {
+        box-shadow: none !important;
+    }
+
+
+
 
 
 /* Header */
