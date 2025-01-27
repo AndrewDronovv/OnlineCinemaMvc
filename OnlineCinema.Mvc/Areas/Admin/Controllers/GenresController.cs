@@ -69,7 +69,7 @@ public sealed class GenresController : BaseMvcController
     [HttpDelete]
     public IActionResult Delete([FromQuery] int id)
     {
-        Genre genre = Context.Genres.FirstOrDefault(g => g.Id == id);
+        var genre = Context.Genres.FirstOrDefault(g => g.Id == id);
         if (genre is null)
         {
             return BadRequest();
@@ -91,6 +91,7 @@ public sealed class GenresController : BaseMvcController
         }
 
         Mapper.Map(updateGenreDto, genre);
+        Context.Genres.Update(genre);
         Context.SaveChanges();
 
         return Ok();

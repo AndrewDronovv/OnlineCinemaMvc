@@ -15,6 +15,66 @@
 </section>
 
 
+<!-- Modal -->
+<div class="modal fade" id="PromotionEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Редактирование жанра</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="EditPromotionName" class="form-label">Название</label>
+                    <input type="text" class="form-control" id="EditPromotionName" />
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="EditPromotionDesc" class="form-label">Описание</label>
+                    <input type="text" class="form-control" id="EditPromotionDesc" />
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="EditPromotionImage" class="form-label">Картинка</label>
+                    <input type="file" name="files" class="form-control" multiple class="form-control" id="EditPromotionImage" />
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="EditPromotionDate" class="form-label">Дата акции</label>
+                    <input type="date" class="form-control" id="EditPromotionDate" />
+
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="EditPromotionMethodName" class="form-label">Название метода</label>
+                    <input type="text" class="form-control" id="EditPromotionMethodName" />
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="EditPromotionBtnName" class="form-label">Название кнопки</label>
+                    <input type="text" class="form-control" id="EditPromotionBtnName" />
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="EditPromotionUrl" class="form-label">Url адрес</label>
+                    <input type="text" class="form-control" id="EditPromotionUrl" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="EditSavePromotionBtn">Сохранить</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @section Scripts {
     <script src="~/js/views/admin/promotions/Index.js"></script>
 } 

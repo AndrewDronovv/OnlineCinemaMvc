@@ -16,6 +16,7 @@ public class AppDbContext : IdentityDbContext<User, Role, int>
     public DbSet<Advertising> Advertisings { get; set; }
     public DbSet<Promotion> Promotions { get; set; }
     public DbSet<News> News { get; set; }
+    public DbSet<Seat> Seats { get; set; }
 
     public AppDbContext(DbContextOptions options) : base(options)
     {

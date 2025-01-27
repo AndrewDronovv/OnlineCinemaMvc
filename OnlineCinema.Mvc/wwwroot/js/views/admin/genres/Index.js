@@ -1,6 +1,10 @@
-﻿const getGenres = filters => axios.post("/admin/genres/getAll", filters)
-    .then(response => response.data)
-    .catch(console.error);
+﻿const getGenres = filters => {
+    return axios.post("/admin/genres/getAll", filters)
+        .then(response => {
+            return response.data;
+        })
+        .catch(console.error);
+}
 
 const getGenreById = genreId => axios.get(`/admin/genres/get?id=${genreId}`)
     .then(response => response.data)
@@ -52,40 +56,6 @@ document.getElementById("AddSaveGenreBtn").addEventListener("click", () => {
         });
 });
 
-//document.addEventListener("click", (event) => {
-//    const target = event.target;
-//    if (target.closest(".edit")) {
-//        event.preventDefault();
-
-//        const genreId = +target.closest(".edit").dataset.id;
-//        const genreNameInput = document.getElementById("EditGenreName");
-
-//        const editModal = new bootstrap.Modal("#GenreEditModal");
-//        editModal.show();
-
-//        genreNameInput.value = target.closest(".edit").dataset.name;
-
-//        document.getElementById("EditSaveGenreBtn").addEventListener("click", saveHandler);
-
-//        function saveHandler() {
-//            const genreName = genreNameInput.value;
-
-//            const updatedData = {
-//                id: genreId,
-//                name: genreName
-//            }
-//            updateGenre(updatedData)
-//                .then(data => {
-//                    editModal.hide();
-//                    table.ajax.reload();
-//                })
-//        }
-//    } else if (target.closest(".delete")) {
-//        event.preventDefault();
-//        onDelete(target.closest(".delete"));
-//    };
-//});
-
 document.addEventListener("click", (event) => {
     const target = event.target;
     if (target.closest(".edit")) {
@@ -132,10 +102,12 @@ let table = new DataTable("#GenresTable", {
     ajax: async (request, drawCallback, settings) => {
         const pageSize = request.length;
         const skipCount = request.start;
-        let filter = {};
+        const keyword = request.search.value;
 
+        let filter = {};
         filter.pageSize = pageSize;
         filter.skipCount = skipCount;
+        filter.keyword = keyword;
 
         const result = await getGenres(filter);
 
@@ -169,4 +141,10 @@ let table = new DataTable("#GenresTable", {
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
         tooltipTriggerList.forEach(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl, { trigger: "hover" }));
     }
+});
+
+const searchInput = document.getElementById('dt-search-0');
+searchInput.addEventListener("input", function () {
+    const searchTerm = this.value;
+    table.search(searchTerm).draw();
 });

@@ -5,17 +5,21 @@ using Microsoft.EntityFrameworkCore;
 using OnlineCinema.Domain;
 using OnlineCinema.Domain.Entities;
 using OnlineCinema.Mvc.Models.ViewModels.Home;
+using OnlineCinema.Mvc.Services.CurrentUser;
 
 namespace OnlineCinema.Mvc.Controllers;
+
 
 public class AccountController : BaseMvcController
 {
     private readonly SignInManager<User> _signInManager;
     private readonly UserManager<User> _userManager;
-    public AccountController(IMapper mapper, AppDbContext context, SignInManager<User> signInManager, UserManager<User> userManager) : base(mapper, context)
+    private readonly ICurrentUserService _currentUserService;
+    public AccountController(IMapper mapper, AppDbContext context, SignInManager<User> signInManager, UserManager<User> userManager, ICurrentUserService currentUserService) : base(mapper, context)
     {
         _signInManager = signInManager;
         _userManager = userManager;
+        _currentUserService = currentUserService;
     }
 
     [HttpPost]
@@ -59,7 +63,6 @@ public class AccountController : BaseMvcController
     public async Task<IActionResult> Register([FromBody] RegisterViewModel input)
     {
         var user = Mapper.Map<User>(input);
-
         user.UserName = input.Email;
         try
         {
@@ -77,13 +80,23 @@ public class AccountController : BaseMvcController
 
             throw;
         }
-
-
     }
+
     [Route("lk")]
     public async Task<IActionResult> PersonalAccount()
     {
+        if (_currentUserService.UserId == null)
+        {
+            return RedirectToAction("Login", "Account");
+        }
 
-        return View("PersonalAccount");
+        User user = await Context.Users.FirstOrDefaultAsync(u => u.Id == _currentUserService.UserId.Value);
+
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        return View("PersonalAccount", user);
     }
 }

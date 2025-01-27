@@ -28,7 +28,6 @@ function validatePasswords() {
 document.getElementById("EnterPassword").addEventListener("change", validatePasswords);
 document.getElementById("RepeatPassword").addEventListener("change", validatePasswords);
 
-
 document.getElementById("LoginButton").addEventListener("click", function () {
     const email = document.getElementById("Email").value;
     const phone = document.getElementById("Phone").value;
@@ -54,8 +53,6 @@ document.getElementById("LoginButton").addEventListener("click", function () {
             console.log(error);
         });
 });
-
-
 
 function showPhoneForm() {
     phoneWrapper.classList.remove("d-none");
@@ -105,3 +102,4 @@ document.getElementById("RegistrationButton").addEventListener("click", function
             console.log(error);
         });
 });
+
